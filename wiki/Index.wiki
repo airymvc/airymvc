@@ -1,3 +1,9 @@
+== Introduction ==
+
+(1) MVC architecture:
+
+(2) Terms:
+
 == Installation ==
 
 (1) Download the framework package.
@@ -11,3 +17,21 @@ Two major configuration files "config.ini" and "acl.xml" are in this framework. 
 
  * To understand the config.ini page
  * To understand the acl.xml page
+
+== First Program ==
+
+(1) The first "Hello World" program.
+(2) The first "MVC" program.
+
+== Model API ==
+
+
+
+== View ==
+
+=== Multiple Language Support ===
+
+
+=== UI Component  ===
+
+

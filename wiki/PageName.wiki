@@ -9,5 +9,5 @@ To have latest support on JQuery related UI component. You can download the late
 
 Two major configuration files "config.ini" and "acl.xml" are in this framework. Both file are located in config folder. 
 
- * To understand the [[config.ini]] page
- * To understand the [[acl.xml]] page
+ * To understand the [config.ini] page
+ * To understand the [acl.xml] page

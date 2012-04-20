@@ -23,10 +23,10 @@ action = "at"
 {{{
 [DB]
 dbtype = "mysql"
-host = "localhost:3306"
-database = "tmvc"
-id = "root"
-pwd = "root"
+host = "domain_or_ip_address:3306"
+database = "database_name"
+id = "database_id"
+pwd = "database_password"
 }}}
 
 

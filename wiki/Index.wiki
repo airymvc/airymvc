@@ -20,7 +20,7 @@ Two major configuration files "config.ini" and "acl.xml" are in this framework. 
 
 == First Program ==
 
-(1) The first "Hello World" program.
+(1) The first "[Hello World]" program.
 (2) The first "MVC" program.
 
 == Model API ==
@@ -33,5 +33,3 @@ Two major configuration files "config.ini" and "acl.xml" are in this framework. 
 
 
 === UI Component  ===
-
-

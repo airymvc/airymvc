@@ -1,6 +1,6 @@
-== config.ini ==
+== Setup config.ini ==
 
-The configuration file sets all the basic system features. You can turn on or off the functionality. The comments start with ';', as in php.ini. Each [Section_Name] is used to classify different functions.  
+The configuration file sets all the basic system features. You can turn on or off the functionality. The comments start with ';', following by "php.ini" writing standard. Each [Section_Name] is used to classify different functions.  
 
 (1) Time Zone sets the time zone of the system.
 
@@ -31,6 +31,6 @@ pwd = "database_password"
 
 
 
-== acl.xml ==
+== Setup acl.xml ==
 
 To be written

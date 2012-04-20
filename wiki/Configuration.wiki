@@ -1,6 +1,34 @@
 == config.ini ==
 
-To be written
+The configuration file sets all the basic system features. You can turn on or off the functionality. The comments start with ';', as in php.ini. Each [Section Name] is used to classify different functions.  
+
+(1) Time Zone sets the time zone of the system.
+
+{{{
+[Time_Zone]
+timezone = "America/Los_Angeles"
+}}}
+
+(2) This sets the keywords of controller, action, and module in query string passed through the URL. If controller's keyword is set to be "cl", the query string should be used cl = controllerName. If you do not use any keyword, the default keywords are "module, controller, action".
+
+{{{
+[MVC_Keyword]
+module = "md"
+controller = "cl"
+action = "at"
+}}}
+
+(3) This section configure the database. The dbtype is the type of the database you use, like "mysql". The host can combine domain (or IP) and port number. The database is the name of the database. "id" and "pwd" are the database user that can have the permission to control the database.
+
+{{{
+[DB]
+dbtype = "mysql"
+host = "localhost:3306"
+database = "tmvc"
+id = "root"
+pwd = "root"
+}}}
+
 
 
 == acl.xml ==

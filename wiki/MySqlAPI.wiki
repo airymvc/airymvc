@@ -1,0 +1,126 @@
+= MySQL =
+== Examples ==
+
+(1) Initial Database 
+In order to use "$this->db" in your model file to do database operations, firstly, developers need to initial databse. Usually, put this in the constructor so that every function inside the model class can use $this->db.
+{{{
+public function __construct() 
+{
+	$this->initialDB();
+}
+}}}
+----
+(2) SQL Query
+  * $where is array like below.
+    * array (op of 'AND' or 'OR', array (op of 'like' or '=', array of (column => value)))
+    * EX: 
+      * array("AND"=>array("="=>array(field1=>value1, field2=>value2), ">"=>array(field3=>value3)))
+      * array(""=>array("="=>array(field1=>value1)))
+    * if operators is null, all operators are "AND"
+    * if it is after a inner join, should use "table.field1=>value1"
+  * $table is a string that is the table name of the database.
+  * $this->db->getQuery_stmt() returns a SQL query string.
+  * $this->db->executeStatement() return the query results.
+
+{{{
+$columns[0] = '*';
+$where = array(""=>array("="=>array('id'=>$id)));
+$this->db->select($columns, $table);
+$this->db->where($where);
+$mysql_results = $this->db->execute(); 
+}}}
+
+OR 
+
+{{{
+$page = 0;
+$number_page = 10;
+$offset = ($page - 1)*$number_page;
+$columns[0] = '*';
+
+$this->db->select($columns, $table);
+$this->db->where($where);
+$this->db->limit($offset, $number_page);
+$mysql_results = $this->db->execute();	
+}}}
+----
+(3) SQL Update
+  * $table @string : the name of the table
+  * $columns @array : the columns array(column_name  => column_value,  column_name1 => column_value1)
+  
+ {{{
+$this->db->update($columns, $table);   
+$this->db->where($where);
+$mysql_results = $this->db->execute();	
+}}}
+----
+(4) SQL Insert
+  * $table @string : the name of the table
+  * $columns @array : the columns array(column_name  => column_value,  column_name1 => column_value1)
+  
+ {{{
+$this->db->insert($columns, $table);
+$mysql_results = $this->db->execute();	
+}}}
+----
+(5) SQL Delete
+  * $table @string : the name of the table
+  
+{{{
+$this->db->delete($table);
+$this->db->where($where);
+$mysql_results = $this->db->execute();	
+}}}
+ 
+
+== API ==
+  * *where($condition)*
+    * $condition is array (op of 'AND' or 'OR', array (op of 'like' or '=', array of (column => value)))
+    * EX: 
+      * array("AND"=>array("="=>array(field1=>value1, field2=>value2), ">"=>array(field3=>value3)))
+      * array(""=>array("="=>array(field1=>value1)))
+    * if operators is null, all operators are "AND"
+    * if it is after a inner join, should use "table.field1=>value1"
+
+  * *innerJoin ($tables)*
+    * $tables is array of table names.
+
+  * *joinOn($condition)*
+     * conditions represent 
+     * Ex: array ("" => array(array("=", table1=>field1, table2=>field2)))
+     *     array ("AND" => array(array("=", table1=>field1, table2=>field2), array("<>", table3=>field3, table2=>field2), array("<>", table4=>field4, table3=>field3)), 
+     *              "OR"=> array(array("=", table5=>field5, table6=>field6)))
+     *
+     * operators represent "AND",  "OR" its squence matters.
+     * if operators is null, all operators are "AND"
+     * 
+     * SELECT * FROM `event` INNER JOIN `event_report` INNER JOIN `member` 
+     * ON `table1`.`field1` = `table2`.`field2`AND `table3`.`field3` <> `table2`.`field2`AND `table4`.`field4` <> `table3`.`field3` OR `table5`.`field5` = `table6`.`field6` LIMIT 0, 10
+
+
+  * *select($columns, $table)*
+    * $table @string : the name of the table
+    * $columns @array : the columns array(column_name  => column_value,  column_name1 => column_value1)
+
+  * *update($columns, $table)*
+    * $table @string : the name of the table
+    * $columns @array : the columns array(column_name  => column_value,  column_name1 => column_value1)
+
+  * *insert($columns, $table)*
+    * $table @string : the name of the table
+    * $columns @array : the columns array(column_name  => column_value,  column_name1 => column_value1)
+    * Keywords like "TIMESTAMP", it will be taken care of
+
+  * *delete($table)*
+    * $table @string : the name of the table
+
+  * *limit($offset, $interval)*
+    * $offset @int
+    * $interval @int
+
+  * *orderBy($column, $if_desc = NULL)*
+    * $column @string: column name in the database
+    * $if_desc @int: null or 1
+
+  * *execute()*
+    * Execute the sql statement that developers create through above APIs.

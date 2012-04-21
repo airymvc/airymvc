@@ -43,6 +43,17 @@ $this->db->where($where);
 $this->db->limit($offset, $number_page);
 $mysql_results = $this->db->execute();	
 }}}
+
+To add OrderBy
+
+{{{
+$columns = array (0 => '*');
+$this->db->select($columns, $table);
+$this->db->where($where);
+$this->db->limit(null, $lastN);
+$this->db->orderBy("id", "DESC");
+$mysql_results = $this->db->execute();
+}}}
 ----
 (3) SQL Update
   * $table @string : the name of the table
@@ -94,8 +105,7 @@ $mysql_results = $this->db->execute();
      * operators represent "AND",  "OR" its squence matters.
      * if operators is null, all operators are "AND"
      * 
-     * SELECT * FROM `event` INNER JOIN `event_report` INNER JOIN `member` 
-     * ON `table1`.`field1` = `table2`.`field2`AND `table3`.`field3` <> `table2`.`field2`AND `table4`.`field4` <> `table3`.`field3` OR `table5`.`field5` = `table6`.`field6` LIMIT 0, 10
+     * SELECT * FROM `event` INNER JOIN `event_report` INNER JOIN `member` ON `table1`.`field1` = `table2`.`field2`AND `table3`.`field3` <> `table2`.`field2`AND `table4`.`field4` <> `table3`.`field3` OR `table5`.`field5` = `table6`.`field6` LIMIT 0, 10
 
 
   * *select($columns, $table)*
@@ -124,3 +134,10 @@ $mysql_results = $this->db->execute();
 
   * *execute()*
     * Execute the sql statement that developers create through above APIs.
+
+  * *getStatement()*
+    * Get the sql statement
+
+  * *setStatement($query_stmt)*
+    * $query_stmt @string: sql statement
+    

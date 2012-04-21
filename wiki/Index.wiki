@@ -23,8 +23,9 @@ Two major configuration files "config.ini" and "acl.xml" are in this framework. 
 (1) The first "[HelloWorld Hello World]" program.
 (2) The first "MVC" program.
 
-== Model API ==
+== Model ==
 
+* [MySqlAPI MySQL] database API
 
 
 == View ==

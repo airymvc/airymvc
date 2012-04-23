@@ -108,7 +108,7 @@ $mysql_results = $this->db->execute();
      * SELECT * FROM `event` INNER JOIN `event_report` INNER JOIN `member` ON `table1`.`field1` = `table2`.`field2`AND `table3`.`field3` <> `table2`.`field2`AND `table4`.`field4` <> `table3`.`field3` OR `table5`.`field5` = `table6`.`field6` LIMIT 0, 10
 
 
-  * *select($columns, $table)*
+  * *select($columns, $table, $distinct = 0)*
     * $table @string : the name of the table
     * $columns @array : the columns array(column_name  => column_value,  column_name1 => column_value1)
 

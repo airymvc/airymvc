@@ -4,7 +4,7 @@
 
 (2) Terms:
 
-[Routing http://airymvc.googlecode.com/files/airy.png]
+[http://airymvc.googlecode.com/files/airy.png]
 
 == Installation ==
 

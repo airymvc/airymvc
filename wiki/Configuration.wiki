@@ -54,6 +54,12 @@ plugin_folder ="lang";
 {{{
 <?xml version="1.0" encoding="UTF-8"?>
 <access_control>
+}}}
+* mapping_tables:
+The database applications usually do the authentication by checking if the account's id and password (or password encryption) are both valid. When the AiryMVC's system authentication mechanism is used, this part of XML is used to map the account's id and password in the database table.
+
+Which module maps to which table for checking the authentication (login) is not one to one relationship. The mapping between module and (mapping) table is set in "module_table_mapping" section.
+{{{
     <mapping_tables>
         <mapping_table id="1">
             <name>admin</name>
@@ -75,7 +81,30 @@ plugin_folder ="lang";
             </mapping_fields>
         </mapping_table>
     </mapping_tables>
- 
+ }}}
+
+* module_table_mapping:
+This section sets which module uses which table for authentication. The ref_map_id refers to the mapping_table id, in below example, module backend uses table id =1, the admin table.
+
+{{{   
+    <module_table_mapping>
+        <module name="backend">
+            <ref_map_id>1</ref_map_id>
+        </module>
+         <module name="default">
+            <ref_map_id>2</ref_map_id>
+        </module>       
+    </module_table_mapping>
+}}}
+
+
+
+* authentication:
+
+The authentication contains four parts. In AiryMVC, it will be a controller that has the four authentication related actions, they are sign_in_action, login_action, login_error_action, and register_action.
+These four special actions will be directly passed through the authentication check in the dispatcher.
+
+{{{
     <authentication>
         <module name="default">
         <controller>userLogin</controller>
@@ -89,7 +118,8 @@ plugin_folder ="lang";
         <controller>login</controller>
         </module>
     </authentication>
-
+}}}
+{{{
     <successful_dispatch>     
             <module name ="backend">
             <controller>admin</controller>
@@ -100,6 +130,9 @@ plugin_folder ="lang";
             <action>getMemberInfo</action>
             </module>
     </successful_dispatch>
+}}}
+
+{{{
     <before_login_browse_rules>
         <module name = "backend">
             <allow>
@@ -120,15 +153,7 @@ plugin_folder ="lang";
             </allow>
         </module>
     </before_login_browse_rules>
-    
-    <module_table_mapping>
-        <module name="backend">
-            <ref_map_id>1</ref_map_id>
-        </module>
-         <module name="default">
-            <ref_map_id>2</ref_map_id>
-        </module>       
-    </module_table_mapping>
-   
+}}}
+{{{   
 </access_control>
 }}}

@@ -101,10 +101,12 @@ This section sets which module uses which table for authentication. The ref_map_
 
 * authentication:*
 
-[http://airymvc.googlecode.com/files/airy.png]
+[http://airymvc.googlecode.com/files/auth.png]
 
 The authentication contains four parts. In AiryMVC, it will be a controller that has the four authentication related actions, they are sign_in_action, login_action, login_error_action, and register_action.
 These four special actions will be directly passed through the authentication check in the dispatcher.
+
+The login here is the login related controller that inherits AclContoller in order to have the login check ability. 
 
 {{{
     <authentication>
@@ -121,6 +123,11 @@ These four special actions will be directly passed through the authentication ch
         </module>
     </authentication>
 }}}
+
+* successful_dispatch:*
+
+The part tells the system that which controller and action the system dispatches to once the login is successful.
+
 {{{
     <successful_dispatch>     
             <module name ="backend">
@@ -133,6 +140,13 @@ These four special actions will be directly passed through the authentication ch
             </module>
     </successful_dispatch>
 }}}
+
+* before_login_browse_rules *
+
+[http://airymvc.googlecode.com/files/airy.png]
+
+When "use_authentication = enable" in the "config.ini", the designated controller and action will be checked if the user has already signed in. If the user has not signed in, they will be forward to the login controller's login action (we configure this in .
+
 
 {{{
     <before_login_browse_rules>

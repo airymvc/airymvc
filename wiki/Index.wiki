@@ -4,6 +4,8 @@
 
 (2) Terms:
 
+[Routing http://airymvc.googlecode.com/files/airy.png]
+
 == Installation ==
 
 (1) Download the framework package.

@@ -55,7 +55,7 @@ plugin_folder ="lang";
 <?xml version="1.0" encoding="UTF-8"?>
 <access_control>
 }}}
-* mapping_tables:
+* mapping_tables:*
 The database applications usually do the authentication by checking if the account's id and password (or password encryption) are both valid. When the AiryMVC's system authentication mechanism is used, this part of XML is used to map the account's id and password in the database table.
 
 Which module maps to which table for checking the authentication (login) is not one to one relationship. The mapping between module and (mapping) table is set in "module_table_mapping" section.
@@ -83,7 +83,7 @@ Which module maps to which table for checking the authentication (login) is not 
     </mapping_tables>
  }}}
 
-* module_table_mapping:
+* module_table_mapping:*
 This section sets which module uses which table for authentication. The ref_map_id refers to the mapping_table id, in below example, module backend uses table id =1, the admin table.
 
 {{{   
@@ -99,7 +99,9 @@ This section sets which module uses which table for authentication. The ref_map_
 
 
 
-* authentication:
+* authentication:*
+
+[http://airymvc.googlecode.com/files/airy.png]
 
 The authentication contains four parts. In AiryMVC, it will be a controller that has the four authentication related actions, they are sign_in_action, login_action, login_error_action, and register_action.
 These four special actions will be directly passed through the authentication check in the dispatcher.

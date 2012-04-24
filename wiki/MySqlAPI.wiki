@@ -105,12 +105,13 @@ $mysql_results = $this->db->execute();
      * operators represent "AND",  "OR" its squence matters.
      * if operators is null, all operators are "AND"
      * 
-     * SELECT * FROM `event` INNER JOIN `event_report` INNER JOIN `member` ON `table1`.`field1` = `table2`.`field2`AND `table3`.`field3` <> `table2`.`field2`AND `table4`.`field4` <> `table3`.`field3` OR `table5`.`field5` = `table6`.`field6` LIMIT 0, 10
+     * SELECT `*` FROM `event` INNER JOIN `event_report` INNER JOIN `member` ON `table1`.`field1` = `table2`.`field2`AND `table3`.`field3` <> `table2`.`field2`AND `table4`.`field4` <> `table3`.`field3` OR `table5`.`field5` = `table6`.`field6` LIMIT 0, 10
 
 
   * *select($columns, $table, $distinct = 0)*
     * $table @string : the name of the table
     * $columns @array : the columns array(column_name  => column_value,  column_name1 => column_value1)
+    * $distinct @int: 0 => do not use select distinct, 1 => use select distinct
 
   * *update($columns, $table)*
     * $table @string : the name of the table

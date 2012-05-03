@@ -1,0 +1,27 @@
+; This is a language setting file
+; Comments start with ';', as in php.ini
+
+[zh-TW]
+AccountID = "帳號"
+Pwd = "密碼"
+Name = "姓名"
+Number = "編號"
+CreateDate = "建立日期"
+Status = "狀態"
+Operation = "操作"
+AdminManagement = "系統管理者管理"
+Search ="搜尋"
+AddNew = "新增"
+HistoryInToday = "歷史上的今天"
+NewHistoryEvent = "新進歷史事件"
+Copyright = "Copyright © 2012 歷史上今天 版權所有"
+Search_Result = "搜尋結果"
+Welcome = "歡迎登入"
+Grade = "等級"
+Modify = "修改"
+Save = "存入"
+Confirm = "確認"
+Sex = "性別"
+Birthday = "生日"
+Logout = "登出"
+Successful = "成功"

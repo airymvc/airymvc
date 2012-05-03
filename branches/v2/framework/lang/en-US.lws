@@ -1,0 +1,27 @@
+; This is a language setting file
+; Comments start with ';', as in php.ini
+
+[en-US]
+AccountID = "Account ID"
+Pwd = "Password"
+Name = "Name"
+Number = "NO."
+CreateDate = "Creation Date"
+Status = "Status"
+Operation = "Operation"
+AdminManagement = "Administrator Management"
+Search ="Search"
+AddNew = "Add New"
+HistoryInToday = "History In Today"
+NewHistoryEvent = "Recent History Event"
+Copyright = "Copyright © 2012 History In Today All Rights Reserved."
+Search_Result = "Search Result"
+Welcome = "Welcome"
+Grade = "Grade"
+Modify = "Modify"
+Save = "Save"
+Confirm = "Confirm"
+Sex = "Sex"
+Birthday = "Birthday"
+Logout = "Log Out"
+Successful = "Successful"

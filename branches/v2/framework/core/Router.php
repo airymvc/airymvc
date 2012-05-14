@@ -192,7 +192,10 @@ class Router {
         MvcReg::setActionViewClassName($actionViewClassName);
         MvcReg::setActionViewFile($actionViewFile);  
     }
-    
+    public function removeDefaultActionView(){
+        MvcReg::setActionViewClassName(null);
+        MvcReg::setActionViewFile(null);        
+    }    
     
     public function setModule($moduleName) {
         MvcReg::setModuleName($moduleName);

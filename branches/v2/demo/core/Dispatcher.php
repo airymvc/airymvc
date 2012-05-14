@@ -85,6 +85,7 @@ class Dispatcher{
                                             $loginAction = Authentication::getLoginAction($moduleName).self::ACTION_POSTFIX;
                                             $router = new Router();
                                             $router->setDefaultModelView($loginControllerName);
+                                            $router->removeDefaultActionView();
                                             $router->setModuleControllerAction($moduleName, $loginControllerName, $loginAction);
                                             Dispatcher::toMVC($loginController, $loginAction, $params);                 
                                         }

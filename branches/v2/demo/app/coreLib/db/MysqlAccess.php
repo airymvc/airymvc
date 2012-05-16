@@ -17,6 +17,7 @@ class MysqlAccess  {
     private $join_on_part;
     private $where_part;
     private $order_part;
+    private $group_part;
     private $limit_part;
     private $keywords;
     private $query_type;
@@ -46,8 +47,15 @@ class MysqlAccess  {
             $opr = $keys[0];
             $field_array = $condition[$ops[0]][$opr];
             $sub_keys = array_keys($field_array);
-            $this->where_part = $this->where_part
-                    . " `" . $sub_keys[0] . "` " . $opr . " '" . $condition[$ops[0]][$opr][$sub_keys[0]] . "' ";
+            $pos = strpos($sub_keys[0], '.');
+            if ($pos == false){
+                $this->where_part = $this->where_part
+                     . " `" . $sub_keys[0] . "` " . $opr . " '" . $condition[$ops[0]][$opr][$sub_keys[0]] . "' ";
+            } else {
+                $tf = explode (".", $sub_keys[0]);
+                $this->where_part = $this->where_part
+                     . " `{$tf[0]}`.`{$tf[1]}` " . $opr . " '" . $condition[$ops[0]][$opr][$sub_keys[0]] . "' ";
+            }
         } else {   //Multiple Join Conditions
             $first_one = TRUE;
             foreach ($ops as $index => $op) {
@@ -55,12 +63,27 @@ class MysqlAccess  {
                     $mkeys = array_keys($fv_pair);
                     foreach ($mkeys as $idx => $mfield) {
                         if ($first_one) {
-                            $this->where_part = $this->where_part
+                            $pos = strpos($mfield, '.');
+                            if ($pos == false){
+                                $this->where_part = $this->where_part
                                     . " `" . $mfield . "` " . $mopr . " '" . $fv_pair[$mfield] . "' ";
+                            } else {
+                                $tf = explode (".", $mfield);
+                                $this->where_part = $this->where_part
+                                    . " `{$tf[0]}`.`{$tf[1]}` " . $mopr . " '" . $fv_pair[$mfield] . "' ";                               
+                            }
                             $first_one = FALSE;
                         } else {
-                            $this->where_part = $this->where_part . strtoupper($op)
+                            $pos = strpos($mfield, '.');
+                            if ($pos == false){
+                                $this->where_part = $this->where_part . strtoupper($op)
                                     . " `" . $mfield . "` " . $mopr . " '" . $fv_pair[$mfield] . "' ";
+                            } else {
+                                $tf = explode (".", $mfield);
+                                $this->where_part = $this->where_part . strtoupper($op)
+                                    . " `{$tf[0]}`.`{$tf[1]}` " . $mopr . " '" . $fv_pair[$mfield] . "' ";                              
+                            }
+                            
                         }
                     }
                 }
@@ -188,7 +211,7 @@ class MysqlAccess  {
         if ($distinct == 0) {
             $this->select_part = 'SELECT ';
         } else {
-            $this->select_part = 'SELECT DISTINCT';         
+            $this->select_part = 'SELECT DISTINCT ';         
         }
         $columns = $this->mysql_escape($columns);
         $table = $this->mysql_escape($table);
@@ -306,7 +329,16 @@ class MysqlAccess  {
             $this->order_part = $this->order_part . " ORDER BY " . $column . " DESC";
         }
     }
-
+    
+    /*
+     *  $column @string: column name in the database
+     */
+    public function groupBy($column) {
+        $column = $this->mysql_escape($column);
+        $this->group_part = $this->group_part . " GROUP BY " . $column;
+    }
+    
+    
     public function execute() {
 
         $query_stmt = $this->getStatement();
@@ -345,7 +377,7 @@ class MysqlAccess  {
             case "SELECT":
                 $this->query_stmt = null;
                 $this->query_stmt = $this->select_part . $this->join_part . $this->join_on_part
-                        . $this->where_part . $this->order_part . $this->limit_part; 
+                        . $this->where_part . $this->group_part . $this->order_part . $this->limit_part; 
                 break;
             case "UPDATE":
                 $this->query_stmt = null;
@@ -369,7 +401,7 @@ class MysqlAccess  {
         }
         $this->select_stmt = null;
         $this->select_stmt = $this->select_part . $this->join_part . $this->join_on_part
-                           . $this->where_part . $this->order_part . $this->limit_part;         
+                           . $this->where_part . $this->group_part . $this->order_part . $this->limit_part;         
         return $this->select_stmt;
     }
     
@@ -384,6 +416,7 @@ class MysqlAccess  {
         $this->update_part = "";
         $this->insert_part = "";
         $this->delete_part = "";
+        $this->group_part = "";
     }
 
     /**

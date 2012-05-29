@@ -438,6 +438,11 @@ class MysqlAccess  {
     }
 
     function mysql_escape($content) {
+        /**
+         * Need to add connection in order to avoid ODBC errors here 
+         */
+        $con = mysql_connect($this->dbConfig_array['host'],$this->dbConfig_array['id'],$this->dbConfig_array['pwd']);
+        mysql_set_charset($this->dbConfig_array['encoding'] ,$con);
         //check if $content is an array
         if (is_array($content)) {
             foreach ($content as $key => $value) {
@@ -447,6 +452,7 @@ class MysqlAccess  {
             //check if $content is not an array
             mysql_real_escape_string($content);
         }
+        mysql_close($con);
         return $content;
     }
 

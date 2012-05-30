@@ -18,7 +18,10 @@ class ParamsValidation {
     public function setValidator($name, $validator) {
         $this->_fields[$name][] = $validator; 
     }
-    
+    /**
+     * @param array $params: key-value array as GET or POST results ($_GET or $_POST)
+     * @return string: error message 
+     */
     public function validate($params) {
         foreach ($params as $key => $value) {
             $vals = $this->_fields[$key];

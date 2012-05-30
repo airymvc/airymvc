@@ -1,5 +1,5 @@
 <?php
-
+require_once 'RuleInterface.php';
 /**
  * Description of EmailRule
  *

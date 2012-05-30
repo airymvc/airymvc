@@ -1,5 +1,5 @@
 <?php
-
+require_once 'ValidatorInterface.php';
 /**
  * Description of AbstractValidator
  *

@@ -1,4 +1,4 @@
-  * [Introduction index]
+  * [Index Introduction]
   * [Feature Feature]
   * [Installation Installation]
   * [Tutorial Tutorial]

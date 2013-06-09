@@ -1,14 +1,12 @@
-#summary One-sentence summary of this page.
 #labels Featured
+#Show the features of the tool
 
-= Introduction =
-
-Add your content here.
-
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+= Features =
+  * Model-View-Controller (MVC) design pattern
+  * Database Access API
+  * Fully Modularized (Portable)
+  * Authentication and authorization
+  * Form input and validation
+  * Internationalization (I18N) and localization (L10N)
+  * Extension library
+  * Friendly with third-party code

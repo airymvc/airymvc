@@ -11,14 +11,11 @@
 
 
 
-== Model ==
 
-* [MySqlAPI MySQL] database API
 
 
 == View ==
 
-=== Multiple Language Support ===
 
 
 === UI Component  ===

@@ -7,12 +7,8 @@
 
 [http://airymvc.googlecode.com/files/airy.png]
 
-== Installation ==
 
-(1) Download the framework package.
-(2) Unzip the package and put it under the web or document root folder.
 
-To have latest support on JQuery related UI component. You can download the latest versions and put them in /webroot/plugin folder and specify the path (or URL) in framework's config.ini file.
 
 == Configuration ==
 

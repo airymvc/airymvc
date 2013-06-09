@@ -3,24 +3,13 @@
 
 (1) MVC architecture:
 
-(2) Terms:
 
 [http://airymvc.googlecode.com/files/airy.png]
 
+(2) Terms:
 
 
 
-== Configuration ==
-
-Two major configuration files "config.ini" and "acl.xml" are in this framework. Both file are located in config folder. 
-
- * To understand the [Configuration	config.ini] page
- * To understand the [Configuration	acl.xml] page
-
-== First Program ==
-
-(1) The first "[HelloWorld Hello World]" program.
-(2) The first "MVC" program.
 
 == Model ==
 

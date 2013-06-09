@@ -1,12 +1,8 @@
-==[Index Overview]==
-===[Examples Examples]===
-==[Advance Advance]==
-
-  * [Articles HOWTO articles]
-    * [ArticlesXSS Web security]
-    * [ArticlesDom DOM manipulation]
-    * [ArticlesStyle CSS and style]
-    * [ArticlesTips Tips and tricks]
-  * [DOMReference DOM reference]
-  * [HTMLElements HTML reference]
-  * [CSSReference CSS reference]
+  * [Introduction Overview]
+  * [Feature Feature]
+  * [Installation Installation]
+  * [Tutorial Tutorial]
+    * [GettingStart GettingStart]
+    * [Example Example]
+  * [Documentation Documentation]
+  * [Development Development

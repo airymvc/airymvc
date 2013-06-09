@@ -4,8 +4,13 @@
 = Installation =
 
 == Linux ==
-(1) Download the framework package.
-(2) Unzip the package and put it under the web or document root folder.
+=== Manual Installation ===
+  # Download the framework package - framework.zip 
+  # Unzip the package - created folder "framework"
+  # Copy or move the framework folder to the web root folder
+    * For Ubuntu Server, web root folder is "/var/www", use "cp -r framework /var/www"
+
+=== Installer Script ===  
 
 == Windows ==
 

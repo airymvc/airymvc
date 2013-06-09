@@ -1,9 +1,9 @@
 #labels INSTALLATION
 #Show how to install this framework.
 
-= Installation =
+= #Installation =
 
-== Linux ==
+== ##Linux ==
 === Manual Installation ===
   # Download the framework package - framework.zip 
   # Unzip the package - created folder "framework"

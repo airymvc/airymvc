@@ -5,10 +5,10 @@
 
 == Linux ==
 === Manual Installation ===
-  # Download the framework package - framework.zip 
-  # Unzip the package - created folder "framework"
-  # Copy or move the framework folder to the web root folder
-    * For Ubuntu Server, web root folder is <font color='#6666DE'> "/var/www" </font>, use "cp -r framework /var/www"
+  # Download the framework package - <font color='#6666DE'>framework.zip</font> 
+  # Unzip the package - created folder <font color='#6666DE'>"framework"</font>
+  # Copy or move the framework folder to the <font color='#6666DE'>web root</font> folder
+    * For Ubuntu Server, web root folder is <font color='#6666DE'>"/var/www"</font>, use <font color='#6666DE'>"cp -r framework /var/www"</font>
 
 === Installer Script ===  
 

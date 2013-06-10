@@ -2,11 +2,11 @@
 #Show the features of the tool
 
 = Features =
-  * Model-View-Controller (MVC) design pattern
-  * Database Access API
-  * Fully Modularized (Portable)
-  * Authentication and authorization
-  * Form input and validation
-  * Internationalization (I18N) and localization (L10N)
-  * Extension library
-  * Friendly with third-party code
+  * *Model-View-Controller (MVC) design pattern*
+  * *Database Access API*
+  * *Fully Modularized (Portable)*
+  * *Authentication and authorization*
+  * *Form input and validation*
+  * *Internationalization (I18N) and localization (L10N)*
+  * *Extension library*
+  * *Friendly with third-party code*

@@ -1,21 +1,12 @@
 #labels Featured
 == Introduction ==
 
-(1) MVC architecture:
+== MVC architecture:==
 
 
 [http://airymvc.googlecode.com/files/airy.png]
 
-(2) Terms:
-
-
-
-
-
-
-
-== View ==
-
-
-
-=== UI Component  ===
+  * Terms:
+    * Model
+    * View
+    * Control

@@ -1,8 +1,9 @@
-= API and UI Components=
+= Documentation=
 == Data Access API ==
 * [MySqlAPI MySQL] database API
 
 == UI Component ==
 
 
-== UI Component ==
+== Configuration ==
+* [Configuration Configuration] file

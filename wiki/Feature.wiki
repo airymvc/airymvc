@@ -10,3 +10,5 @@
   * *Internationalization (I18N) and localization (L10N)*
   * *Extension library*
   * *Friendly with third-party code*
+  * *Security*
+  * *Light-weight*

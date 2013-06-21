@@ -86,7 +86,7 @@ class Config{
              return null;
          }
          
-         return $ini_array['Lead_File'];;
+         return $ini_array['Lead_File'];
      }
      public function getModuleKeyword()
      {
@@ -151,5 +151,16 @@ class Config{
          }
          return 'index.php';        
      }
+     
+     public function getScriptPlugin()
+     {
+     	 $ini_array = parse_ini_file ($this->_iniFilePath, true);
+         if (!isset($ini_array['JS_Plugin'])) {
+             return null;
+         }
+    
+         return $ini_array['JS_Plugin'];         
+     }
+     
 }
 ?>

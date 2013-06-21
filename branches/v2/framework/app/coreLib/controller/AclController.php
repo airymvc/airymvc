@@ -1,8 +1,7 @@
 <?php
 
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * @TODO: Need to refactoring this. This controller shares several methods with AppController
  */
 
 require_once ('AcDb.php');
@@ -62,9 +61,9 @@ class AclController extends AbstractController {
         } else {
             $mysql_results = $AcDb->getUserByUidPwd($tableName, $db_uid, $uid, $db_pwd, $db_isdelete, $db_isdelete_value);
         }
-        $rows = mysql_fetch_array($mysql_results, MYSQL_BOTH);
-
+        $rows = mysql_fetch_array($mysql_results, MYSQL_ASSOC);
         $bLogin = false;
+        
         if (!is_null($db_salt)) {
             if ($rows[$db_salt] == $salt) {
                 $bLogin = true;
@@ -81,11 +80,14 @@ class AclController extends AbstractController {
             $_SESSION[$moduleName][Authentication::ENCRYPT_UID] = Base64UrlCode::encrypt($uid);
             $_SESSION[$moduleName][Authentication::IS_LOGIN] = true;
             $_SESSION[Authentication::UID]['module'] = $moduleName;
-
+            foreach ($rows as $key => $value) {
+                    $_SESSION[$moduleName]['user'][$key] = $value;
+            }
+            
             $successfulArray = $acl->getSuccessfulDispatch();
             $successfulController = $successfulArray[$moduleName]['controller'];
             $successfulAction = $successfulArray[$moduleName]['action'];
-            //forward to successful controller
+
             Dispatcher::forward($moduleName, $successfulController, $successfulAction, $this->params);
         } else {
             $authArray = $acl->getAuthentications();
@@ -165,7 +167,7 @@ class AclController extends AbstractController {
         if (!is_null($viewName)) {
             $this->switchView($moduleName, $viewName);
         }
-        $error_msg = "ERROR!!";
+        $error_msg = "用戶名或密碼錯誤!!";
         $this->view->setVariable('error_msg', $error_msg);
         $this->view->setVariable("form", $loginForm);
         $this->view->render();
@@ -233,23 +235,30 @@ class AclController extends AbstractController {
     public function switchView($moduleName, $viewName) {
         $viewClassName = $viewName . self::VIEW_POSTFIX;
         $viewFile = "modules" . DIRECTORY_SEPARATOR . $moduleName . DIRECTORY_SEPARATOR
-                . "views" . DIRECTORY_SEPARATOR . $viewClassName . ".php";
+                  . "views" . DIRECTORY_SEPARATOR . $viewClassName . ".php";
         $this->view->setViewFilePath($viewFile);
     }
 
     public function switchToCallAction($actionName) {
-        $controllerName = MvcReg::getControllerName();
-        $moduleName = MvcReg::getModuleName();
+            $controllerName = MvcReg::getControllerName();
+            $moduleName = MvcReg::getModuleName();
 
-        $name = $controllerName . "_" . $actionName;
-        $actionViewClassName = $name . self::VIEW_POSTFIX;
-        $actionViewFile = "modules" . DIRECTORY_SEPARATOR . $moduleName . DIRECTORY_SEPARATOR . "views" . DIRECTORY_SEPARATOR . $actionViewClassName . ".php";
-
-        MvcReg::setActionViewClassName($actionViewClassName);
-        MvcReg::setActionViewFile($actionViewFile);
-        $action = $actionName . self::ACTION_POSTFIX;
-        $this->setDefaultView();
-        $this->$action();
+            $actionViewClassName = ucwords($actionName) . self::VIEW_POSTFIX;
+            $actionViewFile = "modules".DIRECTORY_SEPARATOR.$moduleName .DIRECTORY_SEPARATOR. "views".DIRECTORY_SEPARATOR .$controllerName. DIRECTORY_SEPARATOR. $actionViewClassName .".php";
+            $absActionViewFile = PathService::getInstance()->getRootDir() . DIRECTORY_SEPARATOR . $actionViewFile;
+        
+            if (!file_exists($absActionViewFile)) {
+                $name = $controllerName . "_" . $actionName;
+                $actionViewClassName = $name . self::VIEW_POSTFIX;
+                $actionViewFile = "modules".DIRECTORY_SEPARATOR.$moduleName .DIRECTORY_SEPARATOR. "views".DIRECTORY_SEPARATOR . $actionViewClassName .".php";
+            }
+            
+            MvcReg::setActionViewClassName($actionViewClassName);
+            MvcReg::setActionViewFile($actionViewFile); 
+            
+            $action = $actionName . self::ACTION_POSTFIX;
+            $this->setDefaultView();
+            $this->$action();
     }
 
     public function getCurrentActionURL() {

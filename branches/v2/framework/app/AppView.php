@@ -1,74 +1,101 @@
 <?php
-class AppView{
-	
-	public $response;
-	public $viewfilepath;
-        private $_variables;
+class AppView extends AbstractView{
+
+        /**
+         * This is the viewfilepath that will be used
+         * 
+         * @var string 
+         */
+	public  $_viewFilePath;
+        
+        
+        /**
+         * Variables that have been set to this view are saved in an array
+         * 
+         * @var array 
+         */
+        protected $_variables;        
+        
+        /**
+         *
+         * Determine if the plugins will be added
+         * 
+         * @var Boolean 
+         */
+        protected $_hasScript = false;
+        
 	
 	public function __construct()
 	{
-		$this->response = null;
-		$this->viewfilepath = null;
+            $this->_viewFilePath = null;            
+            stream_wrapper_register('airy.view', 'StreamHelper');
 	}	
-	
-	public function render()
-	{
-            $jsFlag = false;
-            //$rsp will be passed to view as a return key-value pair array
-            if (!is_null($this->_variables)) {
-                foreach ($this->_variables as $name=>$value)
-                {
-                    if ($value instanceof UIComponent || $value instanceof JUIComponent) {
-                        $htmlValue = $value->render();
-                        $newHtmlValue = $this->replaceWordByKey($htmlValue);
-                        /**
-                         * @todo: Detect javascript and replace them, and put them in the header 
-                         */
-                        $headerJS = $this->getHeaderJS($newHtmlValue);
-
-                        if (!is_null($headerJS) && isset($headerJS)) {
-                            $jsFlag = true;                            
-                            //$newHtmlValue = $this->removeHeaderJSFromHtml($newHtmlValue, $headerJS);
+        
+        /**
+         *
+         * @throws Exception 
+         */
+	public function render() {
+            try {
+                if (!is_null($this->_viewFilePath) && file_exists($this->_viewFilePath)) {
+   
+                    //$rsp will be passed to view as a return key-value pair array
+                    if (!is_null($this->_variables)) {
+                        foreach ($this->_variables as $name=>$value)
+                        {
+                            if ($value instanceof UIComponent || $value instanceof JUIComponent) {
+                                $htmlValue        = $value->render();
+                                $newHtmlValue     = $this->replaceWordByKey($htmlValue);
+                                ${$name}          = $newHtmlValue; 
+                                $this->hasAnyScript($newHtmlValue);
+                            } else {
+                                ${$name} = $value;
+                            }         
                         }
-                        ${$name} = $newHtmlValue;                   
-                    } else {
-                        ${$name} = $value;
-                    }         
-                }
-            }
+                    }
+                    /**
+                     * Deprecated
+                     * @TODO: change to all upper case variables 
+                     */    
+                    $path           = PathService::getInstance();
+                    $httpServerHost = $path->getAbsoluteHostURL();
+                    $serverHost     = $path->getAbsoluteHostPath();
+                                                                 
+                    $viewContent = file_get_contents($this->_viewFilePath);
+                    $this->hasAnyScript($viewContent);
+                    
+                    //hasScript check if there is a need for javascript library to be added in
+                    //If there is no javascript UI component, but setScript == true, we still
+                    //add plugins. Otherwise, we simply do not add any libraries.
+                    if ($this->_hasScript) {
+                        //add plugins
+                        $viewContent = $this->addPluginLib($viewContent);                       
+                    }
+                    
+                    $viewContent = $this->replaceWordByKey($viewContent);
+                    
+                    $fp = fopen("airy.view://view_content", "r+");                    
+                    fwrite($fp, $viewContent);
+                    fclose($fp);
 
-            $path = PathService::getInstance();
-            $httpServerHost = $path->getAbsoluteHostURL();
-            $serverHost = $path->getAbsoluteHostPath();
-            if ($jsFlag) {
-                ob_start(array('AppView', 'callbackWithJS'));
-            } else {
-                ob_start(array('AppView', 'callback'));
+                    include "airy.view://view_content";                    
+                    
+                } else {
+                    throw new Exception('No View File Existed!');
+                }
+            } catch (Exception $e) {
+                echo 'Exception: ',  $e->getMessage(), "\n";
             }
-            include $this->viewfilepath;
-            ob_end_flush();
-	}
+	}        
 	
-	/**
-	 * @return the $response
-	 */
-	public function getResponse() {
-		return $this->response;
-	}
 
 	/**
 	 * @return the $viewfilepath
 	 */
 	public function getViewfilepath() {
-		return $this->viewfilepath;
+		return $this->_viewFilePath;
 	}
 
-	/**
-	 * @param field_type $response
-	 */
-	public function setResponse($response) {
-		$this->response = $response;
-	}
 
         public function setVariable($variableName, $value) {
               $this->_variables[$variableName] = $value;
@@ -82,34 +109,20 @@ class AppView{
 	/**
 	 * @param field_type $viewfilepath
 	 */
-	public function setViewFilePath($viewfilepath) {
-		$this->viewfilepath = $viewfilepath;
+	public function setViewFilePath($viewFilePath) {
+		$this->_viewFilePath = $viewFilePath;
 	}
-        
-        public function callbackWithJS($buffer)
-        {   
-            $buffer = $this->addJsLib($buffer);
-            $buffer = $this->replaceWordByKey($buffer);
-            return $buffer;
-        }
-        
-        
-        public function callback($buffer)
-        {            
-            return $this->replaceWordByKey($buffer);
-        }
+
         /**
          *
-         * @param type $buffer 
+         * @param string $buffer 
          */
-        private function replaceWordByKey($buffer){
-            /**
-             * @todo: a java script and css header insertation
-             */
+        protected function replaceWordByKey($buffer){
+
             preg_match_all('/(%({\w*})({\w*})%|%({\w*})%)/', $buffer, $matches);
             $lang = LangService::getInstance();
             /**
-             * @todo: consider two level keyword like %{A}{B}% 
+             * @TODO: Consider two level keyword like %{A}{B}% 
              */
             foreach ($matches[0] as $idx => $rawWdKey) {
                 $tmpWdKey = str_replace('%{', '', $rawWdKey);
@@ -121,48 +134,67 @@ class AppView{
             return $buffer;
         }
         
-        private function getHeaderJS($html){
-            /**
-             * @todo: a java script and css header insertation
-             */
-            $jsArray = array();
-            preg_match_all('/<script.*script>/', $html, $matches); 
-            foreach ($matches[0] as $idx => $js) {
-                 if (!is_null($js) && !empty($js) && isset($js)){
-                     $jsArray[] = $js;
-                 }
+        /**
+         * Check if there is any javascript in the view
+         * 
+         * @param string $html
+         * 
+         */
+        protected function hasAnyScript($html) {
+
+            if (!$this->_hasScript) {
+                preg_match_all('/<(script)(.[^><]*)?>/imU', $html, $matches); 
+                $this->_hasScript = empty($matches[0]) ? false : true;
+            }
+            
+        }
+        
+        public function setScriptPlugin() {
+            $this->_hasScript = true;
+        }
+        
+        protected function getPluginLib() {
+            
+            $pluginStr = "";
+            //Get the array of css and javascript addresses from config.ini
+            $libs    = Config::getInstance()->getScriptPlugin();
+            $cssLibs = $libs['css'];
+            $JsLibs  = $libs['script'];
+            
+            foreach ($cssLibs as $cssLib) {
+                $pluginStr .= sprintf("<link rel='stylesheet' type='text/css' href='%s'>", $cssLib);
+            }
+            
+            foreach ($JsLibs as $JsLib) {
+                $pluginStr .= sprintf("<script src='%s'></script>", $JsLib);
             } 
-            return $jsArray;
+            
+            return $pluginStr;
         }
         
-        private function removeHeaderJSFromHtml($html, $jsArray){
-             foreach ($jsArray as $idx => $replaceJS) {
-                $html = str_replace($replaceJS, '', $html);
-            }  
-            return $html;
-        }
-        
-                /**
-         *
+        /**
+         * Add plugins into html content
+         * 
          * @param type $buffer 
          */
-        private function addJsLib($buffer){
-            /**
-             * @todo: a java script and css header insertation
-             *        set default value below, should use config.ini to replace them
-             */
-            $lib = '</title>';
-            $lib = $lib  . '<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css">';
-            $lib = $lib  . '<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>';
-            $lib = $lib  . '<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>';
-
-            /**
-             *  @todo: javascript lib insertation 
-             */
-   
-            $buffer = str_replace('</title>', $lib, $buffer);   
+        protected function addPluginLib($content){
             
-            return $buffer;
+            $pluginStr = $this->getPluginLib();
+            
+            preg_match_all('/<\s*(title)(.[\s*^><]*)?>(.[^<]*)?<\s*\/(title)\s*>/imU', $content, $matches, PREG_PATTERN_ORDER); 
+            $title = isset($matches[0][0]) ? $matches[0][0] : null;
+   
+            if (!is_null($title)) {
+                //Completed html; attach after <title></title>
+                $replaceText = $title . $pluginStr;
+                $content = str_replace($title, $replaceText, $content);
+            } else {
+                //Not completed html; directly attach to the begining
+                $content = $pluginStr . $content;
+            }
+            
+                        
+            return $content;
         }
 
 

@@ -3,4 +3,4 @@
 	Initializer::initialize();
 	$Router = Loader::load("Router");
 	Dispatcher::dispatch($Router);
-	?>
+?>

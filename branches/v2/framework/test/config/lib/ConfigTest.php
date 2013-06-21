@@ -152,9 +152,8 @@ class ConfigTest extends PHPUnit_Framework_TestCase {
      */
     public function testGetDefaultLanguage() {
         // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $x = $this->object->getDefaultLanguage();
+        $this->assertEquals('zh-TW', $x);
     }
 
     /**
@@ -163,9 +162,8 @@ class ConfigTest extends PHPUnit_Framework_TestCase {
      */
     public function testGetLanguageFolder() {
         // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $x = $this->object->getLanguageFolder();
+        $this->assertEquals('lang', $x);
     }
 
     /**
@@ -174,22 +172,19 @@ class ConfigTest extends PHPUnit_Framework_TestCase {
      */
     public function testGetLanguageKeyword() {
         // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $x = $this->object->getLanguageKeyword();
+        //$this->assertEquals('lg', $x);
     }
 
     /**
-     * @covers Config::getLeadFileName
-     * @todo Implement testGetLeadFileName().
+     * @covers Config::getLanguageKeyword
+     * @todo Implement testGetLanguageKeyword().
      */
-    public function testGetLeadFileName() {
+    public function testGetScriptPlugin() {
         // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $x = $this->object->getScriptPlugin();
+        //$this->assertEquals('lg', $x);
     }
-
 }
 
 ?>

@@ -24,7 +24,7 @@ class AcDb {
     public function getUserByUidPwd($table_name, $uid_field, $uid, $pwd_or_salt_field, 
                                     $isdelete_field = null, $isdelete= null) {
 
-	$columns = array($uid_field, $pwd_or_salt_field);
+	$columns = array('*');
         if (is_null($isdelete_field) || is_null($isdelete))
         {
             $where = array("AND"=>array("="=>array( $uid_field  => $uid)));

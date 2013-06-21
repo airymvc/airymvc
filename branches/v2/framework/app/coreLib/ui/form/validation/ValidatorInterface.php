@@ -8,9 +8,9 @@
  */
 interface ValidatorInterface {
     
-    public function setRequireValid($errorMsg);
+    public function setRequireValid($errorMsg = null);
     
-    public function setCustomValid($methodName, $object, $errorMsg);
+    public function setCustomValid($methodName, $object, $errorMsg = null);
     
     public function validate($value);
     

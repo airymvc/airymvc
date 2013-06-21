@@ -29,14 +29,25 @@ abstract class AbstractContainer extends UIComponent{
         $this->_attributes = $attributes;
     }
     
-    public function setElement($element)
+    public function setElement($element, $key = null)
     {
-        $this->_elements[] =  $element;
+        $key = is_null($key)? count($this->_elements) : $key;
+        $this->_elements[$key] =  $element;
     }
     
     public function setElements($elements)
     {
         $this->_elements = $elements;
+    }
+    
+    public function getElements()
+    {
+        return $this->_elements;
+    }
+    
+    public function getElement($key)
+    {
+        return $this->_elements[$key] =  $element;
     }
     
     

@@ -17,11 +17,12 @@ class Router {
     private $key_val_pairs;
     private $qstring_keys;
     private $languageCode;
+    private $root;
 
 
     function __construct() {
         
-                
+        $this->root = PathService::getInstance()->getRootDir();        
         $config = Config::getInstance();
         $mvc_array = $config->getMVCKeyword();
         $moduleKeyword = "module";
@@ -182,20 +183,26 @@ class Router {
         MvcReg::setModelFile($modelFile);
         MvcReg::setViewFile($viewFile);  
     }
- 
+    
     public function setDefaultActionView($controllerName, $actionName)
     {
-        $name = $controllerName . "_" . $actionName;
-	$actionViewClassName = $name . self::VIEW_POSTFIX;
-        $actionViewFile = "modules".DIRECTORY_SEPARATOR.$this->moduleName .DIRECTORY_SEPARATOR. "views".DIRECTORY_SEPARATOR . $actionViewClassName .".php";
-
+        $actionViewClassName = ucwords($actionName) . self::VIEW_POSTFIX;
+        $actionViewFile = "modules".DIRECTORY_SEPARATOR.$this->moduleName .DIRECTORY_SEPARATOR. "views".DIRECTORY_SEPARATOR .$controllerName. DIRECTORY_SEPARATOR. $actionViewClassName .".php";
+        $absActionViewFile = $this->root . DIRECTORY_SEPARATOR . $actionViewFile;
+        
+        if (!file_exists($absActionViewFile)) {
+            $name = $controllerName . "_" . $actionName;
+            $actionViewClassName = $name . self::VIEW_POSTFIX;
+            $actionViewFile = "modules".DIRECTORY_SEPARATOR.$this->moduleName .DIRECTORY_SEPARATOR. "views".DIRECTORY_SEPARATOR . $actionViewClassName .".php";
+        }
         MvcReg::setActionViewClassName($actionViewClassName);
         MvcReg::setActionViewFile($actionViewFile);  
     }
+    
     public function removeDefaultActionView(){
         MvcReg::setActionViewClassName(null);
         MvcReg::setActionViewFile(null);        
-    }    
+    }
     
     public function setModule($moduleName) {
         MvcReg::setModuleName($moduleName);

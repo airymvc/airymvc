@@ -60,31 +60,38 @@ class MysqlAccess  {
             $first_one = TRUE;
             foreach ($ops as $index => $op) {
                 foreach ($condition[$op] as $mopr => $fv_pair) {
-                    $mkeys = array_keys($fv_pair);
-                    foreach ($mkeys as $idx => $mfield) {
-                        if ($first_one) {
-                            $pos = strpos($mfield, '.');
-                            if ($pos == false){
-                                $this->where_part = $this->where_part
-                                    . " `" . $mfield . "` " . $mopr . " '" . $fv_pair[$mfield] . "' ";
+                    if (is_array($fv_pair)) {
+                        $mkeys = array_keys($fv_pair);
+                        foreach ($mkeys as $idx => $mfield) {
+                            if ($first_one) {
+                                $pos = strpos($mfield, '.');
+                                if ($pos == false){
+                                    $this->where_part = $this->where_part
+                                           . " `" . $mfield . "` " . $mopr . " '" . $fv_pair[$mfield] . "' ";
+                                } else {
+                                    $tf = explode (".", $mfield);
+                                    $this->where_part = $this->where_part
+                                           . " `{$tf[0]}`.`{$tf[1]}` " . $mopr . " '" . $fv_pair[$mfield] . "' ";                               
+                                }
+                                $first_one = FALSE;
                             } else {
-                                $tf = explode (".", $mfield);
-                                $this->where_part = $this->where_part
-                                    . " `{$tf[0]}`.`{$tf[1]}` " . $mopr . " '" . $fv_pair[$mfield] . "' ";                               
-                            }
-                            $first_one = FALSE;
-                        } else {
-                            $pos = strpos($mfield, '.');
-                            if ($pos == false){
-                                $this->where_part = $this->where_part . strtoupper($op)
-                                    . " `" . $mfield . "` " . $mopr . " '" . $fv_pair[$mfield] . "' ";
-                            } else {
-                                $tf = explode (".", $mfield);
-                                $this->where_part = $this->where_part . strtoupper($op)
-                                    . " `{$tf[0]}`.`{$tf[1]}` " . $mopr . " '" . $fv_pair[$mfield] . "' ";                              
-                            }
+                                $pos = strpos($mfield, '.');
+                                if ($pos == false){
+                                    $this->where_part = $this->where_part . strtoupper($op)
+                                           . " `" . $mfield . "` " . $mopr . " '" . $fv_pair[$mfield] . "' ";
+                                } else {
+                                    $tf = explode (".", $mfield);
+                                    $this->where_part = $this->where_part . strtoupper($op)
+                                           . " `{$tf[0]}`.`{$tf[1]}` " . $mopr . " '" . $fv_pair[$mfield] . "' ";                              
+                                }
                             
+                            }
                         }
+                    } else {
+                        //@TODO: to consider if the error log is necessary here
+                        //log the error
+                        $message = "JOIN condition is not an array";
+                        error_log($message, 0);
                     }
                 }
             }

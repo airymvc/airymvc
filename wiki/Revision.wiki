@@ -1,0 +1,21 @@
+#labels revision
+= Revison =
+
+== Release History ==
+  * 2.1
+Currently, the project is working on the version 2.1 to add several functions. 
+
+  * 2.0
+
+= Current Working Items =
+== Version 2.1 
+  * Adding Layout Capability (this functionality can compose different views, html files, such as header or footer, and setup the overall page layout)
+
+  * Adding More Jquery Form Elements
+    * Accordion
+    * Dialog
+    * Menu
+    * Tabs
+    * Tooltip
+
+  * Refactoring the ACL controller

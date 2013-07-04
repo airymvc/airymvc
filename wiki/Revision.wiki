@@ -1,4 +1,3 @@
-#labels revision
 = Revison =
 
 == Release History ==

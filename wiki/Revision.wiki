@@ -1,20 +1,31 @@
 = Revison =
-
-== Release History ==
+== History ==
   * 2.1
 Currently, the project is working on the version 2.1 to add several functions. 
 
   * 2.0
+The first release version of the AiryMVC framework.
 
-= Current Working Items =
+
+= Features =
 == Version 2.1 
-  * Adding Layout Capability (this functionality can compose different views, html files, such as header or footer, and setup the overall page layout)
+  * New capabilities
+    * Project-based program organization and more modularized structure
+    * More ways to put the view files
+    * View layout 
+      * A layout can compose multiple views. Better for constructing a page,  such as setting header, footer, sidebar for a page.
+    * Form decoration
+    * Form element decoration
+    * Jquery Form Elements
+      * Accordion
+      * Dialog
+      * Menu
+      * Tabs
+      * Tooltip
+    * Flexible the access control (login or authentication) controller and component
+    * Multiple database configuration support
 
-  * Adding More Jquery Form Elements
-    * Accordion
-    * Dialog
-    * Menu
-    * Tabs
-    * Tooltip
 
-  * Refactoring the ACL controller
+= Planned Features =
+    * Role-based access control
+    * More understandable SQL methods for database handling

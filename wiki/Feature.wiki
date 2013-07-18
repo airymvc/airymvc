@@ -1,7 +1,7 @@
 #labels Featured
-#Show the features of the tool
+<h1><font color="#F5712A"> Features </font></h1>
+<hr>
 
-= Features =
   * *Model-View-Controller (MVC) design pattern*
   * *Database Access API*
   * *Fully Modularized (Portable)*

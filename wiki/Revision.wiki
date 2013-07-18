@@ -5,7 +5,7 @@
 || 2.0 ||Initial version||
 
 = Features =
-== Version 2.1 
+== Version 2.1 ==
   * New capabilities
     * Project-based program organization and more modularized structure
     * More ways to put the view files
@@ -19,9 +19,15 @@
       * Menu
       * Tabs
       * Tooltip
-    * Flexible the access control (login or authentication) controller and component
+    * Flexible the access control (login and authentication) controller and component
     * Multiple database configuration support
 
+== Version 2.0 ==
+  * Capabilities 
+    * SQL method for MySQL database
+    * Form and form elements
+    * Access control (login and authentication)
+    * Configuration of Javascript library plugins and database 
 
 = Planned Features =
     * Role-based access control

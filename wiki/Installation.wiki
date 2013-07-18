@@ -1,4 +1,3 @@
-#labels INSTALLATION
 <h1><font color="#F5712A"> Installation </font></h1>
 <hr>
 

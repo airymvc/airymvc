@@ -1,7 +1,8 @@
 = Revison =
 == History ==
-|| Version || 2.1 ||Current working version||
-|| Version || 2.0 ||Initial version||
+||*Version*||*Comment*||
+|| 2.1 ||Current working version||
+|| 2.0 ||Initial version||
 
 = Features =
 == Version 2.1 

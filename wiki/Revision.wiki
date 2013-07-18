@@ -1,13 +1,7 @@
 = Revison =
 == History ==
-
-|| table || cells ||
-  * 2.1
-Currently, the project is working on the version 2.1 to add several functions. 
-
-  * 2.0
-The first release version of the AiryMVC framework.
-
+|| Version || 2.1 ||Current working version||
+|| Version || 2.0 ||Initial version||
 
 = Features =
 == Version 2.1 

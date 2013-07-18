@@ -1,5 +1,7 @@
 #labels INSTALLATION
-= Installation =
+<h1><font color="#F5712A"> Installation </font></h1>
+<hr>
+
 
 == <font color='#0F882E'>Linux</font> ==
 === Manual Installation ===

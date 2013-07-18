@@ -1,4 +1,6 @@
-= Documentation=
+<h1><font color="#F5712A"> Documentation </font></h1>
+<hr>
+
 == Data Access API ==
 * [MySqlAPI MySQL] database API
 

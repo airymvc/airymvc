@@ -30,6 +30,7 @@ class indexController extends AppController {
      public function testHelloWorldAction() {
          
          $aVariable = "Hello World! This is the action to test layout";
+         $this->view->noDoctype();
          $this->view->setVar("aVariable", $aVariable);
          $this->view->render();
          

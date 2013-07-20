@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__FILE__) . '/../../../../app/coreLib/acl/Authentication.php';
+require_once dirname(__FILE__) . '/../../../../app/library/acl/Authentication.php';
 
 /**
  * Test class for Authentication.

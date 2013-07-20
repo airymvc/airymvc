@@ -3,7 +3,7 @@
 require_once '../app/AppModel.php';
 require_once '../config/lib/Config.php';
 require_once '../core/PathService.php';
-require_once '../app/coreLib/db/MysqlAccess.php';
+require_once '../app/library/db/MysqlAccess.php';
 
 $apm = new AppModel();
 $apm->initialDB();

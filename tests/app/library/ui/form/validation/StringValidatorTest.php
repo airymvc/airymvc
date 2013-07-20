@@ -1,9 +1,9 @@
 <?php
 
-require_once dirname(__FILE__) . '/../../../../../../app/coreLib/ui/form/validation/StringValidator.php';
-require_once dirname(__FILE__) . '/../../../../../../app/coreLib/ui/form/validation/StrMaxLengthRule.php';
-require_once dirname(__FILE__) . '/../../../../../../app/coreLib/ui/form/validation/StrMinLengthRule.php';
-require_once dirname(__FILE__) . '/../../../../../../app/coreLib/ui/form/validation/RuleInterface.php';
+require_once dirname(__FILE__) . '/../../../../../../app/library/ui/form/validation/StringValidator.php';
+require_once dirname(__FILE__) . '/../../../../../../app/library/ui/form/validation/StrMaxLengthRule.php';
+require_once dirname(__FILE__) . '/../../../../../../app/library/ui/form/validation/StrMinLengthRule.php';
+require_once dirname(__FILE__) . '/../../../../../../app/library/ui/form/validation/RuleInterface.php';
 
 /**
  * Test class for StringValidator.

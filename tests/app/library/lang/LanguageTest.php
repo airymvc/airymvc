@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__FILE__) . '/../../../../app/coreLib/lang/LangService.php';
+require_once dirname(__FILE__) . '/../../../../app/library/lang/Language.php';
 require_once dirname(__FILE__) . '/../../../../config/lib/Config.php';
 require_once dirname(__FILE__) . '/../../../../core/PathService.php';
 

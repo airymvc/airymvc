@@ -1,10 +1,10 @@
 <?php
 
-require_once '../app/coreLib/ui/jquery/JUIComponent.php';
-require_once '../app/coreLib/ui/html/UIComponent.php';
-require_once '../app/coreLib/ui/jquery/Tab.php';
-require_once '../app/coreLib/ui/html/components/TextElement.php';
-require_once '../app/coreLib/ui/html/components/HtmlScript.php';
+require_once '../app/library/ui/jquery/JUIComponent.php';
+require_once '../app/library/ui/html/UIComponent.php';
+require_once '../app/library/ui/jquery/Tab.php';
+require_once '../app/library/ui/html/components/TextElement.php';
+require_once '../app/library/ui/html/components/HtmlScript.php';
 
 //put your code here
 $sf = new Tab('test');

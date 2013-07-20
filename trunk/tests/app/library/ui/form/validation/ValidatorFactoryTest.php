@@ -1,9 +1,9 @@
 <?php
 
-require_once dirname(__FILE__) . '/../../../../../../app/coreLib/ui/form/validation/ValidatorFactory.php';
-require_once dirname(__FILE__) . '/../../../../../../app/coreLib/ui/form/validation/EmailValidator.php';
-require_once dirname(__FILE__) . '/../../../../../../app/coreLib/ui/form/validation/RuleInterface.php';
-require_once dirname(__FILE__) . '/../../../../../../app/coreLib/ui/form/validation/EmailRule.php';
+require_once dirname(__FILE__) . '/../../../../../../app/library/ui/form/validation/ValidatorFactory.php';
+require_once dirname(__FILE__) . '/../../../../../../app/library/ui/form/validation/EmailValidator.php';
+require_once dirname(__FILE__) . '/../../../../../../app/library/ui/form/validation/RuleInterface.php';
+require_once dirname(__FILE__) . '/../../../../../../app/library/ui/form/validation/EmailRule.php';
 
 /**
  * Test class for ValidatorFactory.

@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__FILE__) . '/../../../../app/coreLib/cypher/Base64UrlCode.php';
+require_once dirname(__FILE__) . '/../../../../app/library/cypher/Base64UrlCode.php';
 
 /**
  * Test class for Base64UrlCode.

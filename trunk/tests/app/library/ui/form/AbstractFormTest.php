@@ -1,10 +1,10 @@
 <?php
 
-require_once dirname(__FILE__) . '/../../../../../app/coreLib/ui/UIComponent.php';
-require_once dirname(__FILE__) . '/../../../../../app/coreLib/ui/form/components/AbstractFormElement.php';
-require_once dirname(__FILE__) . '/../../../../../app/coreLib/ui/form/AbstractForm.php';
-require_once dirname(__FILE__) . '/../../../../../app/coreLib/ui/form/components/TextElement.php';
-require_once dirname(__FILE__) . '/../../../../../app/coreLib/ui/form/components/HtmlScript.php';
+require_once dirname(__FILE__) . '/../../../../../app/library/ui/UIComponent.php';
+require_once dirname(__FILE__) . '/../../../../../app/library/ui/form/components/AbstractFormElement.php';
+require_once dirname(__FILE__) . '/../../../../../app/library/ui/form/AbstractForm.php';
+require_once dirname(__FILE__) . '/../../../../../app/library/ui/form/components/TextElement.php';
+require_once dirname(__FILE__) . '/../../../../../app/library/ui/form/components/HtmlScript.php';
 
 
 /**

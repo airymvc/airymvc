@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 require_once '../config/lib/AclUtility.php';
-require_once '../app/coreLib/acl/AclXmlConstant.php';
+require_once '../app/library/acl/AclXmlConstant.php';
 require_once '../core/PathService.php';
 
 $test_acl = AclUtility::getInstance();

@@ -1,10 +1,11 @@
 <?php
+require_once dirname(__FILE__) . '/../zframework/app/library/ui/JsUIComponentInterface.php';
+require_once dirname(__FILE__) . '/../zframework/app/library/ui/jquery/JUIComponent.php';
+require_once dirname(__FILE__) . '/../zframework/app/library/ui/html/UIComponent.php';
+require_once dirname(__FILE__) . '/../zframework/app/library/ui/jquery/Tab.php';
+require_once dirname(__FILE__) . '/../zframework/app/library/ui/html/components/TextElement.php';
+require_once dirname(__FILE__) . '/../zframework/app/library/ui/html/components/HtmlScript.php';
 
-require_once '../app/library/ui/jquery/JUIComponent.php';
-require_once '../app/library/ui/html/UIComponent.php';
-require_once '../app/library/ui/jquery/Tab.php';
-require_once '../app/library/ui/html/components/TextElement.php';
-require_once '../app/library/ui/html/components/HtmlScript.php';
 
 //put your code here
 $sf = new Tab('test');

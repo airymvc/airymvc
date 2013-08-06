@@ -4,7 +4,7 @@
 
 == <font color='#0F882E'>Linux</font> ==
 === Manual Installation ===
-  # Download the framework package - <font color='#6666DE'>[http://code.google.com/p/airymvc/downloads/detail?name=airymvc.zip&can=2&q= framework.zip]</font> 
+  # Download the framework package - <font color='#6666DE'>[http://code.google.com/p/airymvc/downloads/detail?name=airymvc.zip&can=2&q= airymvc.zip]</font> 
   # Unzip the package - created folder <font color='#6666DE'>"framework"</font>
   # Copy or move the framework folder to the <font color='#6666DE'>web root</font> folder
     * For Ubuntu Server, web root folder is <font color='#6666DE'>"/var/www"</font>, use <font color='#6666DE'>"cp -r framework /var/www"</font>
@@ -15,13 +15,13 @@
 == <font color='#0F882E'>Windows</font> ==
 === Manual Installation ===
   # Apache web server under <font color='#6666DE'>IIS</font>
-    # Download the framework package - <font color='#6666DE'>framework.zip</font> 
+    # Download the framework package - <font color='#6666DE'>[http://code.google.com/p/airymvc/downloads/detail?name=airymvc.zip&can=2&q= airymvc.zip]</font> 
     # Unzip the package - created folder <font color='#6666DE'>"framework"</font>
     # Copy or move the framework folder to the <font color='#6666DE'>web root</font> folder
       * For Ubuntu Server, web root folder is <font color='#6666DE'>"c:\inetpub\wwwroot\"</font>, use <font color='#6666DE'>"cp -r framework c:\inetpub\wwwroot\"</font>
 
   # Apache web server under <font color='#6666DE'>XAMPP</font>
-    # Download the framework package - <font color='#6666DE'>framework.zip</font> 
+    # Download the framework package - <font color='#6666DE'>[http://code.google.com/p/airymvc/downloads/detail?name=airymvc.zip&can=2&q= airymvc.zip]</font> 
     # Unzip the package - created folder <font color='#6666DE'>"framework"</font>
     # Copy or move the framework folder to the <font color='#6666DE'>web root</font> folder
       * For Ubuntu Server, web root folder is <font color='#6666DE'>"XAMPP_Target_Folder\xampp\htdocs"</font>, use <font color='#6666DE'>"cp -r framework XAMPP_Target_Folder\xampp\htdocs"</font>
@@ -32,7 +32,7 @@
 == <font color='##0F882E'>MacOS</font> ==
 === Manual Installation ===
   # Apache web server under <font color='#6666DE'>MacOS web server</font>
-    # Download the framework package - <font color='#6666DE'>framework.zip</font> 
+    # Download the framework package - <font color='#6666DE'>[http://code.google.com/p/airymvc/downloads/detail?name=airymvc.zip&can=2&q= airymvc.zip]</font> 
     # Unzip the package - created folder <font color='#6666DE'>"framework"</font>
     # Copy or move the framework folder to the <font color='#6666DE'>web root</font> folder
       * For Ubuntu Server, web root folder is <font color='#6666DE'>"/Library/WebServer/Documents/"</font>, use <font color='#6666DE'>"cp -r framework /Library/WebServer/Documents/"</font>

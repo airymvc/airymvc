@@ -9,7 +9,7 @@ class UiDemoController extends AppController {
              
      public function testAutoCompleteAction() {
          
-		$selections = array("about", "apple", "tomato", "orange");
+		$selections = array("papaya", "apple", "tomato", "orange", "lemon");
 		$acTextField = new AutoCompleteTextField('fruit');
 		$acTextField->setSelections($selections);
 		$acTextField->setLabel("select_fruit", "Select Fruit:");

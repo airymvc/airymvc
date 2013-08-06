@@ -5,7 +5,7 @@
  *   UI Element DEMO
  */
 
-class uiDemoController extends AppController {
+class UiDemoController extends AppController {
              
      public function testAutoCompleteAction() {
          

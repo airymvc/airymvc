@@ -18,11 +18,17 @@ class IndexController extends AppController {
              
      public function helloWorldAction() {
          
-         $aVariable = "Hello World! This is the action to test layout";
+         $variable = "Hello World! This is the action to test layout";
          $this->view->noDoctype();
-         $this->view->setVar("aVariable", $aVariable);
+         $this->view->setVar("aVariable", $variable);
          $this->view->render();
          
+     }
+     
+     public function echoHelloWorldAction() {
+         
+         $variable = "Echo Hello World! This is the action to test layout";
+		 echo $variable;
      }
 
 }

@@ -14,7 +14,7 @@
  */
 
 
-class indexController extends AppController {
+class IndexController extends AppController {
 
      public function init() {
          $layoutFile = $this->getViewDir() .DIRECTORY_SEPARATOR. "layouts" . DIRECTORY_SEPARATOR . 

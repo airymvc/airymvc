@@ -10,9 +10,9 @@ class uiDemoController extends AppController {
      public function testAutoCompleteAction() {
          
 		$selections = array("about", "apple", "tomato", "orange");
-		$acTextField = new AutoCompleteTextField('test_autoComplete');
+		$acTextField = new AutoCompleteTextField('fruit');
 		$acTextField->setSelections($selections);
-		$acTextField->setLabel("testAuto", "testAuto");
+		$acTextField->setLabel("select_fruit", "Select Fruit:");
 		
         $this->view->setVar("aVariable", $acTextField);
         $this->view->render();

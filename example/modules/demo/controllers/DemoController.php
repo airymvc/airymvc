@@ -5,7 +5,7 @@
  *   DEMO
  */
 
-class demoController extends AppController {
+class DemoController extends AppController {
              
      public function testAction() {
          

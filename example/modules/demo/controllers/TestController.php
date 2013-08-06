@@ -1,7 +1,7 @@
 <?php 
 
 
-class testController extends AclController {
+class TestController extends AclController {
 	
 	public function testLoginAction(){
 		echo "test!!";

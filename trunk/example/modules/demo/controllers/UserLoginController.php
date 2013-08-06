@@ -4,7 +4,7 @@
  *
  * @author Hung-Fu Aaron Chang
  */
-class userLoginController extends AclController {
+class UserLoginController extends AclController {
 
 
    /**
@@ -12,17 +12,17 @@ class userLoginController extends AclController {
     * This is a demo for how to user AclController's $this->_acl (AclComponent) for login (authentication)
     */
     public function userLoginAction() {
- 		$this->_acl->login("loginForm");
+                $this->_acl->login("loginForm");
     }
 
     public function userLoginErrorAction() {
-    	$this->switchView("demo", "userLogin", "userLogin");
-		$this->_acl->loginError("ERROR!!!", "error_msg", "loginForm");
+        $this->switchView("demo", "userLogin", "userLogin");
+        $this->_acl->loginError("ERROR!!!", "error_msg", "loginForm");
     }
 
     public function logoutAction() {
         parent::logoutAction();
-        echo "<meta http-equiv=refresh content='0; url=index.php?md=demo&cl=test&testLogout'>";
+        echo "<meta http-equiv=refresh content='0; url=index.php?md=demo&cl=test&at=testLogout'>";
     }
     
     /**
@@ -37,3 +37,4 @@ class userLoginController extends AclController {
 }
 
 ?>
+

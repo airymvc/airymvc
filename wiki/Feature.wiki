@@ -3,8 +3,9 @@
 <hr>
 
   * *Model-View-Controller (MVC) design pattern*
+  * *Highly Portable*
   * *Database Access API*
-  * *Fully Modularized (Portable)*
+  * *Fully Modularized (Plug and Play)*
   * *Authentication and authorization*
   * *Form input and validation*
   * *Internationalization (I18N) and localization (L10N)*

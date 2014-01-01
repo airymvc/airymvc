@@ -1,6 +1,8 @@
 <?php
 
 require_once dirname(dirname(__FILE__)) . '/zframework/core/PathService.php';
+require_once dirname(dirname(__FILE__)) . '/zframework/core/AclXmlConstant.php';
+require_once dirname(dirname(__FILE__)) . '/zframework/core/RouterHelper.php';
 require_once dirname(dirname(__FILE__)) . '/zframework/core/AclUtility.php';
 require_once dirname(dirname(__FILE__)) . '/zframework/core/Config.php';
 

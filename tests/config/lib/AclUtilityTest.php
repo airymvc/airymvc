@@ -18,48 +18,31 @@ class AclUtilityTest extends AiryUnitTest {
      * This method is called before a test is executed.
      */
     public function testSetUp() {
-        $this->object = new AclUtility;
+        $this->object = new AclUtility();
+        $aclxml = dirname(dirname((dirname(__FILE__)))) . '/testfiles/test_aclxml.xml';
+        $this->object->setAclXml($aclxml);
     }
 
-    /**
-     * Tears down the fixture, for example, closes a network connection.
-     * This method is called after a test is executed.
-     */
-    protected function tearDown() {
-        
-    }
-
-    /**
-     * @covers AclUtility::getInstance
-     * @todo Implement testGetInstance().
-     */
-    public function testGetInstance() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * @covers AclUtility::loadXMLtoDOM
-     * @todo Implement testLoadXMLtoDOM().
-     */
-    public function testLoadXMLtoDOM() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
-    }
 
     /**
      * @covers AclUtility::getAuthentications
      * @todo Implement testGetAuthentications().
      */
     public function testGetAuthentications() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+		$auth = $this->object->getAuthentications();
+		$arr = $auth['test_module2'];
+		
+		$this->assertEquals('UserLogin', $arr['controller']);
+		$this->assertEquals('signIn', $arr['sign_in_action']);
+		$this->assertEquals('userLogin', $arr['login_action']);
+		$this->assertEquals('userLoginError', $arr['login_error_action']);
+		$this->assertEquals('loginout', $arr['logout_action']);
+		
+		$exclusiveActions = $arr['other_exclusive_actions'];
+		$this->assertEquals('register', $exclusiveActions[0]);
+		$this->assertEquals('add', $exclusiveActions[1]);
+		$this->assertEquals('sendemail', $exclusiveActions[2]);
+		
     }
 
     /**
@@ -67,22 +50,15 @@ class AclUtilityTest extends AiryUnitTest {
      * @todo Implement testGetSuccessfulDispatch().
      */
     public function testGetSuccessfulDispatch() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+    	$auth = $this->object->getSuccessfulDispatch();
+		$arr = $auth['test_module1'];
+		
+		$this->assertEquals('Admin', $arr['controller']);
+		$this->assertEquals('getAdm', $arr['action']);
+
     }
 
-    /**
-     * @covers AclUtility::getDOMfromXML
-     * @todo Implement testGetDOMfromXML().
-     */
-    public function testGetDOMfromXML() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
-    }
+
 
     /**
      * @covers AclUtility::getAllMapTblAttr
@@ -111,10 +87,10 @@ class AclUtilityTest extends AiryUnitTest {
      * @todo Implement testGetMapTables().
      */
     public function testGetMapTables() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+    	$auth = $this->object->getMapTables();
+
+    	$this->assertEquals('account', $auth[1]);
+		$this->assertEquals('member', $auth[2]);
     }
 
     /**

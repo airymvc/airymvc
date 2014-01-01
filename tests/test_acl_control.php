@@ -1,8 +1,9 @@
 <?php
 
-require_once '../config/lib/AclUtility.php';
-require_once '../core/PathService.php';
-require_once '../config/lib/AclXmlConstant.php';
+require_once dirname(dirname(__FILE__)) . '/zframework/core/AclUtility.php';
+require_once dirname(dirname(__FILE__)) . '/zframework/core/PathService.php';
+require_once dirname(dirname(__FILE__)) . '/zframework/core/AclXmlConstant.php';
+require_once dirname(dirname(__FILE__)) . '/zframework/core/RouterHelper.php';
 
 $test_acl = new AclUtility();
 
@@ -39,6 +40,12 @@ echo "======test6======\n";
 
 
 print_r($test_acl->getEncrytion());
+
+echo "======test7=======\n";
+print_r($test_acl->getAuthentications());
+
+echo "======test8=======\n";
+print_r($test_acl->getBrowseRules());
 
 
 echo "======done==== \n";

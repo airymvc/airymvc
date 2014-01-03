@@ -7,7 +7,7 @@
 class MysqlAccessTest extends AiryUnitTest {
 
     /**
-     * @var Base64UrlCode
+     * @var MysqlAccess
      */
     protected $object;
 

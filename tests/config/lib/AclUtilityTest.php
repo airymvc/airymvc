@@ -60,103 +60,107 @@ class AclUtilityTest extends AiryUnitTest {
 
 
 
-    /**
-     * @covers AclUtility::getAllMapTblAttr
-     * @todo Implement testGetAllMapTblAttr().
-     */
-    public function testGetAllMapTblAttr() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
-    }
+//    /**
+//     * @covers AclUtility::getAllMapTblAttr
+//     * @todo Implement testGetAllMapTblAttr().
+//     */
+//    public function testGetAllMapTblAttr() {
+//        // Remove the following lines when you implement this test.
+//        $this->markTestIncomplete(
+//                'This test has not been implemented yet.'
+//        );
+//    }
 
-    /**
-     * @covers AclUtility::getTableById
-     * @todo Implement testGetTableById().
-     */
-    public function testGetTableById() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
-    }
+//    /**
+//     * @covers AclUtility::getTableById
+//     * @todo Implement testGetTableById().
+//     */
+//    public function testGetTableById() {
+//        // Remove the following lines when you implement this test.
+//        $this->markTestIncomplete(
+//                'This test has not been implemented yet.'
+//        );
+//    }
 
-    /**
-     * @covers AclUtility::getMapTables
-     * @todo Implement testGetMapTables().
-     */
-    public function testGetMapTables() {
-    	$auth = $this->object->getMapTables();
+//    /**
+//     * @covers AclUtility::getMapTables
+//     * @todo Implement testGetMapTables().
+//     */
+//    public function testGetMapTables() {
+//    	$auth = $this->object->getMapTables();
+//
+//    	$this->assertEquals('account', $auth[1]);
+//		$this->assertEquals('member', $auth[2]);
+//    }
 
-    	$this->assertEquals('account', $auth[1]);
-		$this->assertEquals('member', $auth[2]);
-    }
+//    /**
+//     * @covers AclUtility::getMappingModuleTables
+//     * @todo Implement testGetMappingModuleTables().
+//     */
+//    public function testGetMappingModuleTables() {
+//        // Remove the following lines when you implement this test.
+//        $this->markTestIncomplete(
+//                'This test has not been implemented yet.'
+//        );
+//    }
 
-    /**
-     * @covers AclUtility::getMappingModuleTables
-     * @todo Implement testGetMappingModuleTables().
-     */
-    public function testGetMappingModuleTables() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * @covers AclUtility::getTableIdByModule
-     * @todo Implement testGetTableIdByModule().
-     */
-    public function testGetTableIdByModule() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
-    }
+//    /**
+//     * @covers AclUtility::getTableIdByModule
+//     * @todo Implement testGetTableIdByModule().
+//     */
+//    public function testGetTableIdByModule() {
+//        // Remove the following lines when you implement this test.
+//        $this->markTestIncomplete(
+//                'This test has not been implemented yet.'
+//        );
+//    }
 
     /**
      * @covers AclUtility::getMappingFieldByTbl
      * @todo Implement testGetMappingFieldByTbl().
      */
     public function testGetMappingFieldByTbl() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+    	$arr = $this->object->getMappingFieldByTbl(1);
+    	
+    	$this->assertEquals('account_id', $arr['user_id']);
+    	$this->assertEquals('pwd', $arr['pwd']);
+    	$this->assertEquals('salt', $arr['pwd_encrypt']);
+    	$this->assertEquals('is_delete', $arr['is_delete']);
+    	$this->assertEquals('0', $arr['is_delete_value']);
     }
 
-    /**
-     * @covers AclUtility::getRoleTypesByTbl
-     * @todo Implement testGetRoleTypesByTbl().
-     */
-    public function testGetRoleTypesByTbl() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * @covers AclUtility::getLoginedAccessRules
-     * @todo Implement testGetLoginedAccessRules().
-     */
-    public function testGetLoginedAccessRules() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
-    }
+//    /**
+//     * @covers AclUtility::getRoleTypesByTbl
+//     * @todo Implement testGetRoleTypesByTbl().
+//     */
+//    public function testGetRoleTypesByTbl() {
+//        // Remove the following lines when you implement this test.
+//        $this->markTestIncomplete(
+//                'This test has not been implemented yet.'
+//        );
+//    }
+//
+//    /**
+//     * @covers AclUtility::getLoginedAccessRules
+//     * @todo Implement testGetLoginedAccessRules().
+//     */
+//    public function testGetLoginedAccessRules() {
+//        // Remove the following lines when you implement this test.
+//        $this->markTestIncomplete(
+//                'This test has not been implemented yet.'
+//        );
+//    }
 
     /**
      * @covers AclUtility::getBrowseRules
      * @todo Implement testGetBrowseRules().
      */
     public function testGetBrowseRules() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+		$arr = $this->object->getBrowseRules();
+		
+		$this->assertEquals('add', $arr['test_module1']['Admin'][0]);
+		$this->assertEquals('getTitle', $arr['test_module1']['Admin'][1]);
+		$this->assertEquals('ALL_ACTIONS', $arr['test_module1']['Event']);
     }
 
 }

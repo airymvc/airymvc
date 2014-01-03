@@ -93,27 +93,27 @@ class ConfigTest extends AiryUnitTest {
         $this->assertEquals('default', $auth);
     }
 
-    /**
-     * @covers Config::getLanguage
-     * @todo Implement testGetLanguage().
-     */
-    public function testGetLanguage() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * @covers Config::getLeadFile
-     * @todo Implement testGetLeadFile().
-     */
-    public function testGetLeadFile() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
-    }
+//    /**
+//     * @covers Config::getLanguage
+//     * @todo Implement testGetLanguage().
+//     */
+//    public function testGetLanguage() {
+//        // Remove the following lines when you implement this test.
+//        $this->markTestIncomplete(
+//                'This test has not been implemented yet.'
+//        );
+//    }
+//
+//    /**
+//     * @covers Config::getLeadFile
+//     * @todo Implement testGetLeadFile().
+//     */
+//    public function testGetLeadFile() {
+//        // Remove the following lines when you implement this test.
+//        $this->markTestIncomplete(
+//                'This test has not been implemented yet.'
+//        );
+//    }
 
     /**
      * @covers Config::getModuleKeyword
@@ -175,10 +175,6 @@ class ConfigTest extends AiryUnitTest {
         //$this->assertEquals('lg', $x);
     }
 
-    /**
-     * @covers Config::getLanguageKeyword
-     * @todo Implement testGetLanguageKeyword().
-     */
     public function testGetScriptPlugin() {
         // Remove the following lines when you implement this test.
         $x = $this->object->getScriptPlugin();

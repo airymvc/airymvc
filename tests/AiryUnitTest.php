@@ -6,6 +6,7 @@ require_once dirname(dirname(__FILE__)) . '/zframework/core/RouterHelper.php';
 require_once dirname(dirname(__FILE__)) . '/zframework/core/AclUtility.php';
 require_once dirname(dirname(__FILE__)) . '/zframework/core/Config.php';
 require_once dirname(dirname(__FILE__)) . '/zframework/app/library/db/DbAccessInterface.php';
+require_once dirname(dirname(__FILE__)) . '/zframework/app/library/db/MysqlDbAccess.php';
 require_once dirname(dirname(__FILE__)) . '/zframework/app/library/db/MysqlAccess.php';
 
 abstract class AiryUnitTest extends PHPUnit_Framework_TestCase {

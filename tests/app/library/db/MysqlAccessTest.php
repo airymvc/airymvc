@@ -260,6 +260,7 @@ class MysqlAccessTest extends AiryUnitTest {
 		$compare = "SELECT attendent.id, attendent.img, attendent.name, award.name, award.annotation, activity_mng.attend_date FROM `attendent` INNER JOIN `activity_mng` INNER JOIN `award` ON `award`.`id` = `activity_mng`.`award_id` AND `attendent`.`id` = `activity_mng`.`attendent_id` WHERE (`activity_id` = 5) AND (`award_id` > 0)";
 		$this->assertEquals($compare, $result);
     }
+
 }
 
 ?>

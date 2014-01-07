@@ -9,7 +9,7 @@ class Cps_AllTests extends PHPUnit_Framework_TestSuite
 
         $suite->addTestFile($rootLoc.'/config/lib/AclUtilityTest.php');
 		$suite->addTestFile($rootLoc.'/config/lib/ConfigTest.php');
-		$suite->addTestFile($rootLoc.'/app/library/db/MysqlAccessTest.php');
+		$suite->addTestFile($rootLoc.'/app/library/db/MysqlComponentTest.php');
 
         return $suite;
     }

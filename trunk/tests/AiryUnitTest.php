@@ -8,6 +8,11 @@ require_once dirname(dirname(__FILE__)) . '/zframework/core/Config.php';
 require_once dirname(dirname(__FILE__)) . '/zframework/app/library/db/DbAccessInterface.php';
 require_once dirname(dirname(__FILE__)) . '/zframework/app/library/db/SqlComponent.php';
 require_once dirname(dirname(__FILE__)) . '/zframework/app/library/db/MysqlComponent.php';
+require_once dirname(dirname(__FILE__)) . '/zframework/app/library/db/MysqliComponent.php';
+require_once dirname(dirname(__FILE__)) . '/zframework/app/library/db/PdoMysqlComponent.php';
+require_once dirname(dirname(__FILE__)) . '/zframework/app/library/db/AbstractAccess.php';
+require_once dirname(dirname(__FILE__)) . '/zframework/app/library/db/DbAccess.php';
+require_once dirname(dirname(__FILE__)) . '/zframework/app/library/db/PdoAccess.php';
 
 abstract class AiryUnitTest extends PHPUnit_Framework_TestCase {
 	

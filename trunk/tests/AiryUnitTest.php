@@ -9,6 +9,7 @@ require_once dirname(dirname(__FILE__)) . '/zframework/app/library/db/DbAccessIn
 require_once dirname(dirname(__FILE__)) . '/zframework/app/library/db/SqlComponent.php';
 require_once dirname(dirname(__FILE__)) . '/zframework/app/library/db/MysqlComponent.php';
 require_once dirname(dirname(__FILE__)) . '/zframework/app/library/db/MysqliComponent.php';
+require_once dirname(dirname(__FILE__)) . '/zframework/app/library/db/PdoSqlComponent.php';
 require_once dirname(dirname(__FILE__)) . '/zframework/app/library/db/PdoMysqlComponent.php';
 require_once dirname(dirname(__FILE__)) . '/zframework/app/library/db/AbstractAccess.php';
 require_once dirname(dirname(__FILE__)) . '/zframework/app/library/db/DbAccess.php';

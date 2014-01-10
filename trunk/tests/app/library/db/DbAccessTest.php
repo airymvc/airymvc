@@ -20,11 +20,11 @@ class DbAccessTest extends AiryUnitTest {
     	$this->object = new DbAccess(0, $iniFile);
     	$testFilePath = dirname(dirname(dirname(dirname(__FILE__)))) . '/testfiles/test.sql';
 		//create test database
-		$mysqli = new mysqli("localhost", "root", "root");
-		$mysqli->query("CREATE DATABASE airymvc_unit_test");
-		$mysqli->select_db("airymvctest");
-		$query = file_get_contents($testFilePath);
-		$mysqli->multi_query($query);
+//		$mysqli = new mysqli("localhost", "root", "root");
+//		$mysqli->query("CREATE DATABASE airymvc_unit_test");
+//		$mysqli->select_db("airymvc_unit_test");
+//		$query = file_get_contents($testFilePath);
+//		$mysqli->multi_query($query);
     }
 
     /**
@@ -33,7 +33,7 @@ class DbAccessTest extends AiryUnitTest {
      */
     protected function tearDown() {
 		$mysqli = new mysqli("localhost", "root", "root");
-		$mysqli->query("DROP DATABASE airymvc_unit_test");    	 
+//		$mysqli->query("DROP DATABASE airymvc_unit_test");    	 
     }
 
     /**

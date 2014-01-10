@@ -16,14 +16,16 @@ class MysqlComponentTest extends AiryUnitTest {
      * This method is called before a test is executed.
      */
     public function testSetUp() {
-    	$this->object = new MysqlComponent();
+    	$this->object = new MysqlComponent(2);
     	$testFilePath = dirname(dirname(dirname(dirname(__FILE__)))) . '/testfiles/test.sql';
+
 		//create test database
-		$mysqli = new mysqli("localhost", "root", "root");
-		$mysqli->query("CREATE DATABASE airymvc_unit_test");
-		$mysqli->select_db("airymvctest");
-		$query = file_get_contents($testFilePath);
-		$mysqli->multi_query($query);
+//		$mysqli = new mysqli("localhost", "root", "root");
+//		$mysqli->query("CREATE DATABASE airymvc_unit_test");
+//		$mysqli->select_db("airymvc_unit_test");
+//		$query = file_get_contents($testFilePath);
+//		$mysqli->multi_query($query);
+//		$mysqli->close();
     }
 
     /**
@@ -32,7 +34,7 @@ class MysqlComponentTest extends AiryUnitTest {
      */
     protected function tearDown() {
 		$mysqli = new mysqli("localhost", "root", "root");
-		$mysqli->query("DROP DATABASE airymvc_unit_test");    	 
+		//$mysqli->query("DROP DATABASE airymvc_unit_test");    	 
     }
 
     /**
@@ -259,6 +261,19 @@ class MysqlComponentTest extends AiryUnitTest {
 		$result = $this->object->getStatement();
 		$compare = "SELECT attendent.id, attendent.img, attendent.name, award.name, award.annotation, activity_mng.attend_date FROM `attendent` INNER JOIN `activity_mng` INNER JOIN `award` ON `award`.`id` = `activity_mng`.`award_id` AND `attendent`.`id` = `activity_mng`.`attendent_id` WHERE (`activity_id` = 5) AND (`award_id` > 0)";
 		$this->assertEquals($compare, $result);
+    }
+    
+    public function testExecute() {
+  		$this->object->select("*", "activity")
+					 ->where("id > 2")
+					 ->andWhere("id < 10");
+		  
+		$mysqlResult = $this->object->execute();
+		$result = mysql_fetch_assoc($mysqlResult);
+		$compare = array('id' =>3, 'title'=>'act2');
+		$this->assertEquals($compare['id'], $result['id']);
+		$this->assertEquals($compare['title'], $result['title']);
+		 	
     }
 
 }

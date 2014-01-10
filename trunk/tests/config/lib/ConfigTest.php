@@ -43,7 +43,7 @@ class ConfigTest extends AiryUnitTest {
 
         $this->assertEquals('mysql', $arr[0]['dbtype']);
         $this->assertEquals('localhost:3306', $arr[0]['host']);
-        $this->assertEquals('test2', $arr[0]['database']);
+        $this->assertEquals('airymvc_unit_test', $arr[0]['database']);
         $this->assertEquals('root', $arr[0]['id']);
         $this->assertEquals('utf8', $arr[0]['encoding']);
         $this->assertEquals('mysqli', $arr[0]['connection_type']);

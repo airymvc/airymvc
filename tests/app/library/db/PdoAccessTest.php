@@ -18,13 +18,13 @@ class PdoAccessTest extends AiryUnitTest {
     public function testSetUp() {
     	$iniFile = dirname(dirname((dirname(__FILE__)))) . '/testfiles/test_config.ini';
     	$this->object = new PdoAccess(1, $iniFile);
-    	$testFilePath = dirname(dirname(dirname(dirname(__FILE__)))) . '/testfiles/test.sql';
-		//create test database
-		$mysqli = new mysqli("localhost", "root", "root");
-		$mysqli->query("CREATE DATABASE airymvc_unit_test");
-		$mysqli->select_db("airymvctest");
-		$query = file_get_contents($testFilePath);
-		$mysqli->multi_query($query);
+//    	$testFilePath = dirname(dirname(dirname(dirname(__FILE__)))) . '/testfiles/test.sql';
+//		//create test database
+//		$mysqli = new mysqli("localhost", "root", "root");
+//		$mysqli->query("CREATE DATABASE airymvc_unit_test");
+//		$mysqli->select_db("airymvc_unit_test");
+//		$query = file_get_contents($testFilePath);
+//		$mysqli->multi_query($query);
     }
 
     /**
@@ -32,8 +32,8 @@ class PdoAccessTest extends AiryUnitTest {
      * This method is called after a test is executed.
      */
     protected function tearDown() {
-		$mysqli = new mysqli("localhost", "root", "root");
-		$mysqli->query("DROP DATABASE airymvc_unit_test");    	 
+//		$mysqli = new mysqli("localhost", "root", "root");
+//		$mysqli->query("DROP DATABASE airymvc_unit_test");    	 
     }
 
     /**
@@ -261,7 +261,37 @@ class PdoAccessTest extends AiryUnitTest {
 		$compare = "SELECT attendent.id, attendent.img, attendent.name, award.name, award.annotation, activity_mng.attend_date FROM `attendent` INNER JOIN `activity_mng` INNER JOIN `award` ON `award`.`id` = `activity_mng`.`award_id` AND `attendent`.`id` = `activity_mng`.`attendent_id` WHERE (`activity_id` = 5) AND (`award_id` > 0)";
 		$this->assertEquals($compare, $result);
     }
+     
+    public function testExecute() {
+  		$this->object->select("*", "activity")
+					 ->where("id > 2")
+					 ->andWhere("id <= 3");
+		  
+		$pdoResult = $this->object->getDbComponent()->execute();
+		$result = NULL;
+		$count = 0;
+		foreach ($pdoResult as $row) {
+			if ($count == 0) {
+				$result = $row;
+			}
+		}
 
+		$compare = array('id' =>3, 'title'=>'act2');
+		$this->assertEquals($compare['id'], $result['id']);
+		$this->assertEquals($compare['title'], $result['title']);
+		 	
+    }
+
+    public function testPrepare() {
+  		$pstatement = $this->object->getDbComponent()->prepare("SELECT * FROM activity where id = :id");
+		$pstatement->execute(array('id' => 3));  
+		$result = $pstatement->fetchAll();
+
+		$compare = array('id' =>3, 'title'=>'act2');
+		$this->assertEquals($compare['id'], $result[0]['id']);
+		$this->assertEquals($compare['title'], $result[0]['title']);
+		 	
+    }    
 }
 
 ?>

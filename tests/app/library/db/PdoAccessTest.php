@@ -43,14 +43,14 @@ class PdoAccessTest extends AiryUnitTest {
     public function testWhere1() {
     	$condition = array("AND"=>array("="=>array("field_a"=>"value_a", "field2"=>"value2"), ">"=>array("field3"=>"value3")));
 		$result = $this->object->where($condition)->getDbComponent()->getWherePart();
-		$compare = " WHERE  `field_a` = 'value_a' AND `field2` = 'value2' AND `field3` > 'value3' ";
+		$compare = " WHERE  field_a = 'value_a' AND field2 = 'value2' AND field3 > 'value3' ";
 		$this->assertEquals($compare, $result);
     }
     
     public function testWhere2() {		
 		$condition = array(""=>array("="=>array("field1" => "value1")));
 		$result = $this->object->where($condition)->getDbComponent()->getWherePart();
-		$compare = " WHERE  `field1` = 'value1' ";
+		$compare = " WHERE  field1 = 'value1' ";
 		$this->assertEquals($compare, $result);
     }
     
@@ -80,7 +80,7 @@ class PdoAccessTest extends AiryUnitTest {
     public function testInnerJoin() {		
 		$tables = array("table1", "table2");
 		$result = $this->object->innerJoin($tables)->getDbComponent()->getJoinPart();		
-		$compare = " INNER JOIN `table1` INNER JOIN `table2`";
+		$compare = " INNER JOIN table1 INNER JOIN table2";
 		$this->assertEquals($compare, $result);
     }
     
@@ -88,7 +88,7 @@ class PdoAccessTest extends AiryUnitTest {
 		$table = "table1";
 		$columns = array ("count(*)", "col1", "col2");
 		$result = $this->object->select($columns, $table)->getDbComponent()->getSelectPart();		
-		$compare = "SELECT count(*), col1, col2 FROM `table1`";
+		$compare = "SELECT count(*), col1, col2 FROM table1";
 		$this->assertEquals($compare, $result);
     }  
 
@@ -96,7 +96,7 @@ class PdoAccessTest extends AiryUnitTest {
 		$table = "table1";
 		$columns = array ("count(*)", "col1", "col2");
 		$result = $this->object->select($columns, $table, "distinct")->getDbComponent()->getSelectPart();		
-		$compare = "SELECT DISTINCT count(*), col1, col2 FROM `table1`";
+		$compare = "SELECT DISTINCT count(*), col1, col2 FROM table1";
 		$this->assertEquals($compare, $result);
     }
     
@@ -104,7 +104,7 @@ class PdoAccessTest extends AiryUnitTest {
 		$table = "table1";
 		$columns = array ("count(*), col1, col2");
 		$result = $this->object->select($columns, $table, "distinct")->getDbComponent()->getSelectPart();		
-		$compare = "SELECT DISTINCT count(*), col1, col2 FROM `table1`";
+		$compare = "SELECT DISTINCT count(*), col1, col2 FROM table1";
 		$this->assertEquals($compare, $result);
     }
     
@@ -116,7 +116,7 @@ class PdoAccessTest extends AiryUnitTest {
                 			 "OR" => array(array( "=", 'table5'=>'field5', 'table6'=>'field6')));
 
 		$result = $this->object->joinOn($condition)->getDbComponent()->getJoinOnPart();		
-		$compare = " ON  `table1`.`field1` = `table2`.`field2` AND `table3`.`field3` <> `table2`.`field2` AND `table4`.`field4` <> `table3`.`field3`  OR `table5`.`field5` = `table6`.`field6` ";
+		$compare = " ON  table1.field1 = table2.field2 AND table3.field3 <> table2.field2 AND table4.field4 <> table3.field3  OR table5.field5 = table6.field6 ";
 		$this->assertEquals($compare, $result);
     }    
     
@@ -129,7 +129,7 @@ class PdoAccessTest extends AiryUnitTest {
     	                    );
 
 		$result = $this->object->joinOn($condition)->getDbComponent()->getJoinOnPart();		
-		$compare = " ON  `table1`.`field1` = `table2`.`field2` ";
+		$compare = " ON  table1.field1 = table2.field2 ";
 		$this->assertEquals($compare, $result);
     } 
     
@@ -175,7 +175,7 @@ class PdoAccessTest extends AiryUnitTest {
     	$columns = array('column_name' => 'column_value', 'column_name1' => 'column_value1');
     	$table = 'table';	
 		$result = $this->object->update($columns, $table)->getDbComponent()->getUpdatePart();		
-		$compare = "UPDATE `table` SET `column_name`='column_value', `column_name1`='column_value1'";
+		$compare = "UPDATE table SET column_name='column_value', column_name1='column_value1'";
 		$this->assertEquals($compare, $result);
     }
 
@@ -183,7 +183,7 @@ class PdoAccessTest extends AiryUnitTest {
     	$columns = array('column_name' => 'column_value', 'column_name1' => 'column_value1');
     	$table   = 'table';	
 		$result  = $this->object->insert($columns, $table)->getDbComponent()->getInsertPart();		
-		$compare = "INSERT INTO table ( `column_name`, `column_name1`) VALUES ('column_value', 'column_value1')";
+		$compare = "INSERT INTO table ( column_name, column_name1) VALUES ('column_value', 'column_value1')";
 		$this->assertEquals($compare, $result);
     }    
     
@@ -217,12 +217,12 @@ class PdoAccessTest extends AiryUnitTest {
 
 		$this->object->where($where1);
 		$result = $this->object->getDbComponent()->getStatement();
-		$compare = "SELECT attendent.id, attendent.img, attendent.name, award.name, award.annotation, activity_mng.attend_date FROM `attendent` INNER JOIN `activity_mng` INNER JOIN `award` ON  `award`.`id` = `activity_mng`.`award_id` AND `attendent`.`id` = `activity_mng`.`attendent_id`  WHERE  `activity_id` = '5' AND `award_id` > '0' ";
+		$compare = "SELECT attendent.id, attendent.img, attendent.name, award.name, award.annotation, activity_mng.attend_date FROM attendent INNER JOIN activity_mng INNER JOIN award ON  award.id = activity_mng.award_id AND attendent.id = activity_mng.attendent_id  WHERE  activity_id = '5' AND award_id > '0' ";
 		$this->assertEquals($compare, $result);
     }
     
     public function testGetStatement2() {
-    	$columns1 = ("'attendent.id','attendent.img','attendent.name','award.name','award.annotation','activity_mng.attend_date'");
+    	$columns1 = ("attendent.id, attendent.img, attendent.name, award.name, award.annotation, activity_mng.attend_date");
     					  
 		$joinTables1 = array(0 => 'activity_mng',
                      		 1 => 'award',);
@@ -235,7 +235,7 @@ class PdoAccessTest extends AiryUnitTest {
 					 ->andWhere("`award_id` > 0");
 
 		$result = $this->object->getDbComponent()->getStatement();
-		$compare = "SELECT 'attendent.id','attendent.img','attendent.name','award.name','award.annotation','activity_mng.attend_date' FROM `attendent` INNER JOIN `activity_mng` INNER JOIN `award` ON `award`.`id` = `activity_mng`.`award_id` AND `attendent`.`id` = `activity_mng`.`attendent_id` WHERE (`activity_id` = 5) AND (`award_id` > 0)";
+		$compare = "SELECT attendent.id, attendent.img, attendent.name, award.name, award.annotation, activity_mng.attend_date FROM attendent INNER JOIN activity_mng INNER JOIN award ON `award`.`id` = `activity_mng`.`award_id` AND `attendent`.`id` = `activity_mng`.`attendent_id` WHERE (`activity_id` = 5) AND (`award_id` > 0)";
 		$this->assertEquals($compare, $result);
     }
     
@@ -258,7 +258,7 @@ class PdoAccessTest extends AiryUnitTest {
 					 ->andWhere("`award_id` > 0");
 
 		$result = $this->object->getDbComponent()->getStatement();
-		$compare = "SELECT attendent.id, attendent.img, attendent.name, award.name, award.annotation, activity_mng.attend_date FROM `attendent` INNER JOIN `activity_mng` INNER JOIN `award` ON `award`.`id` = `activity_mng`.`award_id` AND `attendent`.`id` = `activity_mng`.`attendent_id` WHERE (`activity_id` = 5) AND (`award_id` > 0)";
+		$compare = "SELECT attendent.id, attendent.img, attendent.name, award.name, award.annotation, activity_mng.attend_date FROM attendent INNER JOIN activity_mng INNER JOIN award ON `award`.`id` = `activity_mng`.`award_id` AND `attendent`.`id` = `activity_mng`.`attendent_id` WHERE (`activity_id` = 5) AND (`award_id` > 0)";
 		$this->assertEquals($compare, $result);
     }
      

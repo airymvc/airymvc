@@ -1,6 +1,5 @@
 <?php
 
-require_once dirname(__FILE__) . '/../../../../app/library/acl/Authentication.php';
 
 /**
  * Test class for Authentication.
@@ -9,17 +8,10 @@ require_once dirname(__FILE__) . '/../../../../app/library/acl/Authentication.ph
 class AuthenticationTest extends PHPUnit_Framework_TestCase {
 
     /**
-     * @var Authentication
-     */
-    protected $object;
-
-    /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
      */
-    protected function setUp() {
-        $this->object = new Authentication;
-        
+    public function testSetUp() {
     }
 
     /**
@@ -30,81 +22,49 @@ class AuthenticationTest extends PHPUnit_Framework_TestCase {
         
     }
 
-    /**
-     * @covers Authentication::isLogin
-     * @todo Implement testIsLogin().
-     */
-    public function testIsLogin() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * @covers Authentication::getSignInAction
-     * @todo Implement testGetSignInAction().
-     */
-    public function testGetSignInAction() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
-    }
 
     /**
      * @covers Authentication::getLoginController
      * @todo Implement testGetLoginController().
      */
     public function testGetLoginController() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+    	$aclxml = dirname(dirname(dirname((dirname(__FILE__))))) . '/testfiles/test_aclxml.xml';
+    	Authentication::setAclXml($aclxml);
+    	$result = Authentication::getLoginController("test_module2");
+    	$compare = "UserLogin";
+    	$this->assertEquals($result, $compare);
     }
 
-    /**
-     * @covers Authentication::getLoginAction
-     * @todo Implement testGetLoginAction().
-     */
-    public function testGetLoginAction() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
-    }
 
     /**
      * @covers Authentication::getLoginErrorAction
      * @todo Implement testGetLoginErrorAction().
      */
     public function testGetLoginErrorAction() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+    	$aclxml = dirname(dirname(dirname((dirname(__FILE__))))) . '/testfiles/test_aclxml.xml';
+    	Authentication::setAclXml($aclxml);
+    	$result = Authentication::getLoginErrorAction("test_module2");
+    	$compare = "userLoginError";
+    	$this->assertEquals($result, $compare);
     }
 
-    /**
-     * @covers Authentication::getRegisterAction
-     * @todo Implement testGetRegisterAction().
-     */
-    public function testGetRegisterAction() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
-    }
 
     /**
      * @covers Authentication::getLoginExcludeActions
      * @todo Implement testGetLoginExcludeActions().
      */
     public function testGetLoginExcludeActions() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+    	$aclxml = dirname(dirname(dirname((dirname(__FILE__))))) . '/testfiles/test_aclxml.xml';
+    	Authentication::setAclXml($aclxml);
+    	$result = Authentication::getLoginExcludeActions("test_module2");
+    	$compare = array("UserLogin" => array("signIn" => "signIn",
+    										  "userLogin" => "userLogin",
+    										  "userLoginError" => "userLoginError"
+    										 )
+    					);
+    	$this->assertEquals($result['UserLogin']['signIn'], $compare['UserLogin']['signIn']);
+    	$this->assertEquals($result['UserLogin']['userLogin'], $compare['UserLogin']['userLogin']);
+    	$this->assertEquals($result['UserLogin']['userLoginError'], $compare['UserLogin']['userLoginError']);
     }
 
     /**
@@ -112,12 +72,29 @@ class AuthenticationTest extends PHPUnit_Framework_TestCase {
      * @todo Implement testGetAllAllows().
      */
     public function testGetAllAllows() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+    	$aclxml = dirname(dirname(dirname((dirname(__FILE__))))) . '/testfiles/test_aclxml.xml';
+    	Authentication::setAclXml($aclxml);
+    	$result = Authentication::getAllAllows("test_module2");
+
+    	$compare = array("Demo" => "ALL_ACTIONS");
+    	$this->assertEquals($result['Demo'], $compare['Demo']);
     }
 
+    /**
+     * @covers Authentication::getAllAllows
+     * @todo Implement testGetAllAllows().
+     */
+    public function testGetOtherExclusiveActions() {
+    	$aclxml = dirname(dirname(dirname((dirname(__FILE__))))) . '/testfiles/test_aclxml.xml';
+    	Authentication::setAclXml($aclxml);
+    	$result = Authentication::getOtherExclusiveActions("test_module2");
+
+    	$compare = array("register", "add", "sendemail");
+    	$this->assertEquals($result[0], $compare[0]);
+    	$this->assertEquals($result[1], $compare[1]);
+    	$this->assertEquals($result[2], $compare[2]);
+    }
+    
 }
 
 ?>

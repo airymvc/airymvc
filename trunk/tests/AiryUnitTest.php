@@ -14,6 +14,11 @@ require_once dirname(dirname(__FILE__)) . '/zframework/app/library/db/PdoMysqlCo
 require_once dirname(dirname(__FILE__)) . '/zframework/app/library/db/AbstractAccess.php';
 require_once dirname(dirname(__FILE__)) . '/zframework/app/library/db/DbAccess.php';
 require_once dirname(dirname(__FILE__)) . '/zframework/app/library/db/PdoAccess.php';
+require_once dirname(dirname(__FILE__)) . '/zframework/core/AclUtility.php';
+require_once dirname(dirname(__FILE__)) . '/zframework/core/PathService.php';
+require_once dirname(dirname(__FILE__)) . '/zframework/core/AclXmlConstant.php';
+require_once dirname(dirname(__FILE__)) . '/zframework/core/RouterHelper.php';
+require_once dirname(dirname(__FILE__)) . '/zframework/app/library/acl/Authentication.php';
 
 abstract class AiryUnitTest extends PHPUnit_Framework_TestCase {
 	

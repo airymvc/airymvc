@@ -166,7 +166,7 @@ class MysqlComponentTest extends AiryUnitTest {
     } 
     
     public function testInWhere() {	
-		$this->object->InWhere("abc, def");
+		$this->object->inWhere("abc, def");
 		$result = $this->object->getWherePart();		
 		$compare = " IN (abc, def)";
 		$this->assertEquals($compare, $result);

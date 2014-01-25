@@ -1,24 +1,6 @@
 <?php
 
-require_once dirname(dirname(__FILE__)) . '/zframework/core/PathService.php';
-require_once dirname(dirname(__FILE__)) . '/zframework/core/AclXmlConstant.php';
-require_once dirname(dirname(__FILE__)) . '/zframework/core/RouterHelper.php';
-require_once dirname(dirname(__FILE__)) . '/zframework/core/AclUtility.php';
-require_once dirname(dirname(__FILE__)) . '/zframework/core/Config.php';
-require_once dirname(dirname(__FILE__)) . '/zframework/app/library/db/DbAccessInterface.php';
-require_once dirname(dirname(__FILE__)) . '/zframework/app/library/db/SqlComponent.php';
-require_once dirname(dirname(__FILE__)) . '/zframework/app/library/db/MysqlComponent.php';
-require_once dirname(dirname(__FILE__)) . '/zframework/app/library/db/MysqliComponent.php';
-require_once dirname(dirname(__FILE__)) . '/zframework/app/library/db/PdoSqlComponent.php';
-require_once dirname(dirname(__FILE__)) . '/zframework/app/library/db/PdoMysqlComponent.php';
-require_once dirname(dirname(__FILE__)) . '/zframework/app/library/db/AbstractAccess.php';
-require_once dirname(dirname(__FILE__)) . '/zframework/app/library/db/DbAccess.php';
-require_once dirname(dirname(__FILE__)) . '/zframework/app/library/db/PdoAccess.php';
-require_once dirname(dirname(__FILE__)) . '/zframework/core/AclUtility.php';
-require_once dirname(dirname(__FILE__)) . '/zframework/core/PathService.php';
-require_once dirname(dirname(__FILE__)) . '/zframework/core/AclXmlConstant.php';
-require_once dirname(dirname(__FILE__)) . '/zframework/core/RouterHelper.php';
-require_once dirname(dirname(__FILE__)) . '/zframework/app/library/acl/Authentication.php';
+
 
 abstract class AiryUnitTest extends PHPUnit_Framework_TestCase {
 	
@@ -30,8 +12,35 @@ abstract class AiryUnitTest extends PHPUnit_Framework_TestCase {
      * This method is called before a test is executed.
      */
     protected function setUp() {
-        set_include_path(dirname(dirname(__FILE__)) . '/zframework/');
+    	$framework = "zframework";
+        set_include_path(dirname(dirname(__FILE__)) . "/{$framework}/");
+        $this->includeTestFiles($framework);
         $this->testSetUp();
+    }
+    
+    protected function includeTestFiles($framework) {
+    	$frameworkRoot = dirname(dirname(__FILE__));
+		require_once $frameworkRoot . "/{$framework}/core/PathService.php";
+		require_once $frameworkRoot . "/{$framework}/core/AclXmlConstant.php";
+		require_once $frameworkRoot . "/{$framework}/core/RouterHelper.php";
+		require_once $frameworkRoot . "/{$framework}/core/AclUtility.php";
+		require_once $frameworkRoot . "/{$framework}/core/Config.php";
+		require_once $frameworkRoot . "/{$framework}/app/library/db/DbAccessInterface.php";
+		require_once $frameworkRoot . "/{$framework}/app/library/db/SqlComponent.php";
+		require_once $frameworkRoot . "/{$framework}/app/library/db/MysqlCommon.php";
+		require_once $frameworkRoot . "/{$framework}/app/library/db/MysqlComponent.php";
+		require_once $frameworkRoot . "/{$framework}/app/library/db/MysqliComponent.php";
+		require_once $frameworkRoot . "/{$framework}/app/library/db/PdoSqlComponent.php";
+		require_once $frameworkRoot . "/{$framework}/app/library/db/PdoMysqlComponent.php";
+		require_once $frameworkRoot . "/{$framework}/app/library/db/AbstractAccess.php";
+		require_once $frameworkRoot . "/{$framework}/app/library/db/DbAccess.php";
+		require_once $frameworkRoot . "/{$framework}/app/library/db/PdoAccess.php";
+		require_once $frameworkRoot . "/{$framework}/core/AclUtility.php";
+		require_once $frameworkRoot . "/{$framework}/core/PathService.php";
+		require_once $frameworkRoot . "/{$framework}/core/AclXmlConstant.php";
+		require_once $frameworkRoot . "/{$framework}/core/RouterHelper.php";
+		require_once $frameworkRoot . "/{$framework}/app/library/acl/Authentication.php";
+		require_once $frameworkRoot . "/{$framework}/app/library/db/MssqlComponent.php";    	
     }
     
     public function testSetUp(){

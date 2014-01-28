@@ -48,6 +48,8 @@ class ConfigTest extends AiryUnitTest {
         $this->assertEquals('utf8', $arr[0]['encoding']);
         $this->assertEquals('mysqli', $arr[0]['connection_type']);
         
+        $this->assertEquals('dblib', $arr[4]['driver']);
+        
 
         $iniFile = dirname(dirname((dirname(__FILE__)))) . '/testfiles/test_config_def.ini';
         $this->objectDefault->setIniFilePath($iniFile);

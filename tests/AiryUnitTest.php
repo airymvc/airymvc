@@ -32,6 +32,8 @@ abstract class AiryUnitTest extends PHPUnit_Framework_TestCase {
 		require_once $frameworkRoot . "/{$framework}/app/library/db/MysqliComponent.php";
 		require_once $frameworkRoot . "/{$framework}/app/library/db/PdoSqlComponent.php";
 		require_once $frameworkRoot . "/{$framework}/app/library/db/PdoMysqlComponent.php";
+		require_once $frameworkRoot . "/{$framework}/app/library/db/MssqlComponent.php";
+		require_once $frameworkRoot . "/{$framework}/app/library/db/PdoMssqlComponent.php";
 		require_once $frameworkRoot . "/{$framework}/app/library/db/AbstractAccess.php";
 		require_once $frameworkRoot . "/{$framework}/app/library/db/DbAccess.php";
 		require_once $frameworkRoot . "/{$framework}/app/library/db/PdoAccess.php";
@@ -40,7 +42,7 @@ abstract class AiryUnitTest extends PHPUnit_Framework_TestCase {
 		require_once $frameworkRoot . "/{$framework}/core/AclXmlConstant.php";
 		require_once $frameworkRoot . "/{$framework}/core/RouterHelper.php";
 		require_once $frameworkRoot . "/{$framework}/app/library/acl/Authentication.php";
-		require_once $frameworkRoot . "/{$framework}/app/library/db/MssqlComponent.php";    	
+		    	
     }
     
     public function testSetUp(){

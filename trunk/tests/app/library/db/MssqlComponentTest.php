@@ -217,8 +217,24 @@ class MssqlComponentTest extends AiryUnitTest {
 					 ->where("id > 2")
 					 ->andWhere("id < 10");
 		  
-		$result = $this->object->execute("SELECT * FROM [activity] WHERE (id > 2) AND (id < 10)");
+		$result = $this->object->execute();
 
+		$compare = array('id' =>3, 'title'=>'act2');
+		$this->assertEquals($compare['id'], $result[0]['id']);
+		$this->assertEquals($compare['title'], $result[0]['title']);
+		 	
+    }
+    
+    public function testLimitExecute() {
+  		$this->object->select("*", "activity")
+					 ->limit(1, 1)
+					 ->orderBy('id');
+					 			 
+		$statement = $this->object->getStatement();  			
+		$compareStatement = "SELECT *  FROM (SELECT *, ROW_NUMBER() OVER ( ORDER BY id) as row FROM  [activity]) a WHERE  (row > 1) and (row <= 2)";
+		$this->assertEquals($compareStatement, $statement);
+
+		$result = $this->object->execute();
 		$compare = array('id' =>3, 'title'=>'act2');
 		$this->assertEquals($compare['id'], $result[0]['id']);
 		$this->assertEquals($compare['title'], $result[0]['title']);

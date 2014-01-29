@@ -243,6 +243,31 @@ class PdoMssqlComponentTest extends AiryUnitTest {
 		$this->assertEquals($compare['title'], $result[0]['title']);
 		 	
     } 
+    
+    public function testLimitExecute() {
+  		$this->object->select("*", "activity")
+					 ->limit(1, 1)
+					 ->orderBy('id');
+					 			 
+		$statement = $this->object->getStatement(); 
+		$compareStatement = "SELECT *  FROM (SELECT *, ROW_NUMBER() OVER ( ORDER BY id) as row FROM  activity) a WHERE  (row > 1) and (row <= 2)";
+		$this->assertEquals($compareStatement, $statement);
+		
+    	$pdoResult = $this->object->execute();
+    	
+		$result = NULL;
+		$count = 0;
+		foreach ($pdoResult as $row) {
+			if ($count == 0) {
+				$result = $row;
+			}
+		}
+
+		$compare = array('id' =>3, 'title'=>'act2');
+		$this->assertEquals($compare['id'], $result['id']);
+		$this->assertEquals($compare['title'], $result['title']);
+		 	
+    }
 
 }
 

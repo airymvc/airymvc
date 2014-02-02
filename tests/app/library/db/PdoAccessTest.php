@@ -251,7 +251,22 @@ class PdoAccessTest extends AiryUnitTest {
 		$this->assertEquals($compare['id'], $result[0]['id']);
 		$this->assertEquals($compare['title'], $result[0]['title']);
 		 	
-    }    
+    }   
+
+    public function testCount() {
+    	$pdoResult = $this->object->getDbComponent()->execute("SELECT COUNT(*) FROM activity");
+		$result = NULL;
+		$count = 0;
+		foreach ($pdoResult as $row) {
+			if ($count == 0) {
+				$result = $row;
+			}
+		}
+
+		$compare = 3;
+		$this->assertEquals($compare, $result["COUNT(*)"]);		
+		 	
+    }
 }
 
 ?>

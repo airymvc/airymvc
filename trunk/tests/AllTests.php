@@ -16,6 +16,7 @@ class Cps_AllTests extends PHPUnit_Framework_TestSuite
 		$suite->addTestFile($rootLoc.'/app/library/acl/AuthenticationTest.php');
 		$suite->addTestFile($rootLoc.'/app/library/db/MssqlComponentTest.php');
 		$suite->addTestFile($rootLoc.'/app/library/db/PdoMssqlComponentTest.php');
+		$suite->addTestFile($rootLoc.'/app/library/page/PaginatorTest.php');
         
 		return $suite;
     }

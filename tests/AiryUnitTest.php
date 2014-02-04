@@ -43,7 +43,15 @@ abstract class AiryUnitTest extends PHPUnit_Framework_TestCase {
 		require_once $frameworkRoot . "/{$framework}/core/RouterHelper.php";
 		require_once $frameworkRoot . "/{$framework}/app/library/acl/Authentication.php";
 		require_once $frameworkRoot . "/{$framework}/app/library/page/Paginator.php";
-		    	
+		require_once $frameworkRoot . "/{$framework}/app/library/ui/html/UIComponent.php";
+		require_once $frameworkRoot . "/{$framework}/app/library/ui/html/form/AbstractForm.php";
+		require_once $frameworkRoot . "/{$framework}/app/library/ui/html/form/PostForm.php";
+		require_once $frameworkRoot . "/{$framework}/app/library/ui/html/components/TextElement.php";
+		require_once $frameworkRoot . "/{$framework}/app/library/ui/html/components/PasswordElement.php";
+		require_once $frameworkRoot . "/{$framework}/app/library/ui/html/components/SubmitElement.php";
+		require_once $frameworkRoot . "/{$framework}/app/library/ui/html/components/DivElement.php";		
+		require_once $frameworkRoot . "/{$framework}/app/library/acl/LoginForm.php";
+   	
     }
     
     public function testSetUp(){

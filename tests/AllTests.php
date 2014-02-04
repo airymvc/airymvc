@@ -17,6 +17,12 @@ class Cps_AllTests extends PHPUnit_Framework_TestSuite
 		$suite->addTestFile($rootLoc.'/app/library/db/MssqlComponentTest.php');
 		$suite->addTestFile($rootLoc.'/app/library/db/PdoMssqlComponentTest.php');
 		$suite->addTestFile($rootLoc.'/app/library/page/PaginatorTest.php');
+		$suite->addTestFile($rootLoc.'/app/library/ui/form/components/AbstractFormElementTest.php');
+		$suite->addTestFile($rootLoc.'/app/library/ui/form/components/ButtonElementTest.php');
+		$suite->addTestFile($rootLoc.'/app/library/ui/form/components/CheckBoxElementTest.php');
+		$suite->addTestFile($rootLoc.'/app/library/ui/form/components/TextAreaElementTest.php');
+		$suite->addTestFile($rootLoc.'/app/library/ui/form/components/DivElementTest.php');
+		$suite->addTestFile($rootLoc.'/app/library/ui/form/AbstractFormTest.php');
         $suite->addTestFile($rootLoc.'/app/library/acl/LoginFormTest.php');
         
 		return $suite;

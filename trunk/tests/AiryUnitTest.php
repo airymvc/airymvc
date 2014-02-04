@@ -46,10 +46,18 @@ abstract class AiryUnitTest extends PHPUnit_Framework_TestCase {
 		require_once $frameworkRoot . "/{$framework}/app/library/ui/html/UIComponent.php";
 		require_once $frameworkRoot . "/{$framework}/app/library/ui/html/form/AbstractForm.php";
 		require_once $frameworkRoot . "/{$framework}/app/library/ui/html/form/PostForm.php";
+		require_once $frameworkRoot . "/{$framework}/app/library/ui/html/components/AbstractFormElement.php";
+		require_once $frameworkRoot . "/{$framework}/app/library/ui/html/components/FieldElement.php";
+		require_once $frameworkRoot . "/{$framework}/app/library/ui/html/components/InputType.php";
+		require_once $frameworkRoot . "/{$framework}/app/library/ui/html/components/ButtonElement.php";
 		require_once $frameworkRoot . "/{$framework}/app/library/ui/html/components/TextElement.php";
 		require_once $frameworkRoot . "/{$framework}/app/library/ui/html/components/PasswordElement.php";
 		require_once $frameworkRoot . "/{$framework}/app/library/ui/html/components/SubmitElement.php";
-		require_once $frameworkRoot . "/{$framework}/app/library/ui/html/components/DivElement.php";		
+		require_once $frameworkRoot . "/{$framework}/app/library/ui/html/components/CheckBoxElement.php";
+		require_once $frameworkRoot . "/{$framework}/app/library/ui/html/components/TextAreaElement.php";
+		require_once $frameworkRoot . "/{$framework}/app/library/ui/html/components/DivElement.php";
+		require_once $frameworkRoot . "/{$framework}/app/library/ui/html/components/HtmlScript.php";
+		require_once $frameworkRoot . "/{$framework}/app/library/ui/html/form/AbstractForm.php";		
 		require_once $frameworkRoot . "/{$framework}/app/library/acl/LoginForm.php";
    	
     }

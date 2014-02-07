@@ -3,7 +3,8 @@
 
 = History =
 ||*Version*||*Comment*||
-|| 2.1 ||Current working version||
+|| 2.2 ||Current working version||
+|| 2.1 ||||
 || 2.0 ||Initial version||
 
 = Features =

@@ -8,6 +8,13 @@
 || 2.0 ||Initial version||
 
 = Features =
+== Version 2.2 ==
+  * New capabilities
+    * Support mysqli
+    * Support PDO
+    * Support MSSQL DB (PDO and mssql)
+    * Improve database APIs
+
 == Version 2.1 ==
   * New capabilities
     * Project-based program organization and more modularized structure
@@ -34,4 +41,3 @@
 
 = Planned Features =
     * Role-based access control
-    * More understandable SQL methods for database handling

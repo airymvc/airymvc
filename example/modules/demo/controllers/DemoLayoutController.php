@@ -27,7 +27,7 @@ class DemoLayoutController extends AppController {
      }
      
      public function contentAction() {
-         $content = "This is the content";
+         $content = "This is the content!";
          $this->view->setVar("content", $content);
          $this->layout->render();
      }

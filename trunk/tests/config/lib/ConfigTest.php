@@ -53,7 +53,8 @@ class ConfigTest extends AiryUnitTest {
 
         $iniFile = dirname(dirname((dirname(__FILE__)))) . '/testfiles/test_config_def.ini';
         $this->objectDefault->setIniFilePath($iniFile);
-        $arr = $this->objectDefault->getDBConfig();
+        $tmpArr = $this->objectDefault->getDBConfig();
+        $arr = $tmpArr[0];
         
         $this->assertEquals('mysql', $arr['dbtype']);
         $this->assertEquals('localhost:3306', $arr['host']);

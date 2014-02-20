@@ -16,7 +16,7 @@ class PdoAccessTest extends AiryUnitTest {
      * This method is called before a test is executed.
      */
     public function testSetUp() {
-    	$iniFile = dirname(dirname((dirname(__FILE__)))) . '/testfiles/test_config.ini';
+    	$iniFile = dirname(dirname(dirname((dirname(__FILE__))))) . '/testfiles/test_config.ini';
     	$this->object = new PdoAccess(1, $iniFile);
 //    	$testFilePath = dirname(dirname(dirname(dirname(__FILE__)))) . '/testfiles/test.sql';
 //		//create test database

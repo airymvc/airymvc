@@ -17,7 +17,8 @@ class PdoAccessTest extends AiryUnitTest {
      */
     public function testSetUp() {
     	$iniFile = dirname(dirname(dirname((dirname(__FILE__))))) . '/testfiles/test_config.ini';
-    	$this->object = new PdoAccess(1, $iniFile);
+    	$this->object = new PdoAccess();
+    	$this->object->config(1, $iniFile);
 //    	$testFilePath = dirname(dirname(dirname(dirname(__FILE__)))) . '/testfiles/test.sql';
 //		//create test database
 //		$mysqli = new mysqli("localhost", "root", "root");

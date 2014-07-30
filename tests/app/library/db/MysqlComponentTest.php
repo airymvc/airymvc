@@ -16,7 +16,8 @@ class MysqlComponentTest extends AiryUnitTest {
      * This method is called before a test is executed.
      */
     public function testSetUp() {
-    	$this->object = new MysqlComponent(2);
+    	$this->object = new MysqlComponent();
+    	$this->object->setConfigById(2);
     	$testFilePath = dirname(dirname(dirname(dirname(__FILE__)))) . '/testfiles/test.sql';
 
 		//create test database

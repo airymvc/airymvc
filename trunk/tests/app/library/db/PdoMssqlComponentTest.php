@@ -16,7 +16,10 @@ class PdoMssqlComponentTest extends AiryUnitTest {
      * This method is called before a test is executed.
      */
     public function testSetUp() {
-    	$this->object = new PdoMssqlComponent(4);
+    	$this->object = new PdoMssqlComponent();
+    	$this->object->setConfigById(4);
+    	$configArray = $this->object->getdbConfigArray();
+    	$this->object->configConnection($configArray);
     	$testFilePath = dirname(dirname(dirname(dirname(__FILE__)))) . '/testfiles/test.sql';
     }
 

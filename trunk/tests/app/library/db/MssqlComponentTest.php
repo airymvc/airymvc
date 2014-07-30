@@ -16,7 +16,8 @@ class MssqlComponentTest extends AiryUnitTest {
      * This method is called before a test is executed.
      */
     public function testSetUp() {
-    	$this->object = new MssqlComponent(3);
+    	$this->object = new MssqlComponent();
+    	$this->object->setConfigById(3);
     	$testFilePath = dirname(dirname(dirname(dirname(__FILE__)))) . '/testfiles/test.sql';
     }
 

@@ -17,7 +17,8 @@ class DbAccessTest extends AiryUnitTest {
      */
     public function testSetUp() {
     	$iniFile = dirname(dirname(dirname(dirname(__FILE__)))) . '/testfiles/test_config.ini';
-    	$this->object = new DbAccess(0, $iniFile);
+    	$this->object = new DbAccess();
+    	$this->object->config(0, $iniFile);
     	$testFilePath = dirname(dirname(dirname(dirname(__FILE__)))) . '/testfiles/test.sql';
 		//create test database
 //		$mysqli = new mysqli("localhost", "root", "root");

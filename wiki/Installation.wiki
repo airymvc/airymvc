@@ -24,7 +24,7 @@
     # Download the framework package - <font color='#6666DE'>[http://code.google.com/p/airymvc/downloads/detail?name=airymvc.zip&can=2&q= airymvc.zip]</font> 
     # Unzip the package - created folder <font color='#6666DE'>"airymvc"</font>
     # Copy or move the airymvc folder to the <font color='#6666DE'>web root</font> folder
-      * For Ubuntu Server, web root folder is <font color='#6666DE'>"XAMPP_Target_Folder\xampp\htdocs"</font>, use <font color='#6666DE'>"cp -r airymvc XAMPP_Target_Folder\xampp\htdocs"</font>
+      * For Ubuntu web server, web root folder is <font color='#6666DE'>"XAMPP_Target_Folder\xampp\htdocs"</font>, use <font color='#6666DE'>"cp -r airymvc XAMPP_Target_Folder\xampp\htdocs"</font>
 
 === Installer ===  
   * Installer will be provided soon.
@@ -35,7 +35,7 @@
     # Download the framework package -  Go to download page <font color='#6666DE'>[https://code.google.com/p/airymvc/downloads/detail?name=airymvc_v2.1.zip&can=2&q=]</font> 
     # Unzip the package - created folder <font color='#6666DE'>"airymvc"</font>
     # Copy or move the airymvc folder to the <font color='#6666DE'>web root</font> folder
-      * For Ubuntu Server, web root folder is <font color='#6666DE'>"/Library/WebServer/Documents/"</font>, use <font color='#6666DE'>"cp -r airymvc /Library/WebServer/Documents/"</font>
+      * For MacOS web server, web root folder is <font color='#6666DE'>"/Library/WebServer/Documents/"</font>, use <font color='#6666DE'>"cp -r airymvc /Library/WebServer/Documents/"</font>
 
 === Installer ===  
   * Installer will be provided soon.

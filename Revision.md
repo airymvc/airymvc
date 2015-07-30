@@ -1,0 +1,48 @@
+<h1><font color='#F5712A'> Revison </font></h1>
+
+
+&lt;hr&gt;
+
+
+
+# History #
+|**Version**|**Comment**|
+|:----------|:----------|
+| 2.2       |Current working version|
+| 2.1       |           |
+| 2.0       |Initial version|
+
+# Features #
+## Version 2.2 ##
+  * New capabilities
+    * Support mysqli
+    * Support PDO
+    * Support MSSQL DB (PDO and mssql)
+    * Improve database APIs
+
+## Version 2.1 ##
+  * New capabilities
+    * Project-based program organization and more modularized structure
+    * More ways to put the view files
+    * View layout
+      * A layout can compose multiple views. Better for constructing a page,  such as setting header, footer, sidebar for a page.
+    * Form decoration
+    * Form element decoration
+    * Jquery Form Elements
+      * Accordion
+      * Dialog
+      * Menu
+      * Tabs
+      * Tooltip
+    * Flexible the access control (login and authentication) controller and component
+    * Multiple database configuration support
+
+## Version 2.0 ##
+  * Capabilities
+    * SQL method for MySQL database
+    * Form and form elements
+    * Access control (login and authentication)
+    * Configuration of Javascript library plugins and database
+
+# Planned Features #
+  * Role-based access control

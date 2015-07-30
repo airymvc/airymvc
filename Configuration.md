@@ -1,0 +1,175 @@
+## Setup config.ini ##
+
+The configuration file sets all the basic system features. You can turn on or off the functionality. The comments start with ';', following by "php.ini" writing standard. Each [Section\_Name](Section_Name.md) is used to classify different functions.
+
+(1) Time Zone sets the time zone of the system.
+
+```
+[Time_Zone]
+timezone = "America/Los_Angeles"
+```
+
+(2) This sets the keywords of controller, action, and module in query string passed through the URL. If controller's keyword is set to be "cl", the query string should be used cl = controllerName. If you do not use any keyword, the default keywords are "module, controller, action".
+
+```
+[MVC_Keyword]
+module = "md"
+controller = "cl"
+action = "at"
+```
+
+(3) This section configure the database. The dbtype is the type of the database you use, like "mysql". The host can combine domain (or IP) and port number. The database is the name of the database. "id" and "pwd" are the database user that can have the permission to control the database.
+
+```
+[DB]
+dbtype = "mysql"
+host = "domain_or_ip_address:3306"
+database = "database_name"
+id = "database_id"
+pwd = "database_password"
+```
+
+(4) This section decides if the application wants to use framework's authentication mechanism. Setting "enable" means using the authentication. Once it is enable, we also setup acl.xml for detailed access control configuration.
+
+```
+[Authentication]
+;enable or disable
+use_authentication = "enable"
+```
+
+
+(5) The framework has internationalization supports as default. The keyword is the URL key for switching different languages. The example below shows that passing lg=zh-TW in URL can switch to zh-TW language setting. The plugin\_folder saves the language translation files. It is relative to the root (source) folder.
+
+```
+[Language]
+;langauge keyword is the word for passing the language code on the URL
+keyword = "lg";
+default = "zh-TW";
+;Default folder is lang. If it is not defined here, count from the root
+plugin_folder ="lang";
+```
+
+## Setup acl.xml ##
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<access_control>
+```
+**mapping\_tables:**
+The database applications usually do the authentication by checking if the account's id and password (or password encryption) are both valid. When the AiryMVC's system authentication mechanism is used, this part of XML is used to map the account's id and password in the database table.
+
+Which module maps to which table for checking the authentication (login) is not one to one relationship. The mapping between module and (mapping) table is set in "module\_table\_mapping" section.
+```
+    <mapping_tables>
+        <mapping_table id="1">
+            <name>admin</name>
+            <mapping_fields>
+                <user_id>account_id</user_id>
+                <pwd>pwd</pwd>
+                <pwd_encrypt>salt</pwd_encrypt>
+                <is_delete>is_delete</is_delete>
+            </mapping_fields>
+        </mapping_table>
+
+        <mapping_table id="2">
+            <name>member</name>
+            <mapping_fields>
+                <user_id>account_id</user_id>
+                <pwd>pwd</pwd>
+                <role>role</role>
+                <role_set>adm, user, superuser</role_set>
+            </mapping_fields>
+        </mapping_table>
+    </mapping_tables>
+```
+
+**module\_table\_mapping:**
+This section sets which module uses which table for authentication. The ref\_map\_id refers to the mapping\_table id, in below example, module backend uses table id =1, the admin table.
+
+```
+    <module_table_mapping>
+        <module name="backend">
+            <ref_map_id>1</ref_map_id>
+        </module>
+         <module name="default">
+            <ref_map_id>2</ref_map_id>
+        </module>       
+    </module_table_mapping>
+```
+
+
+
+**authentication:**
+
+![http://airymvc.googlecode.com/files/auth.png](http://airymvc.googlecode.com/files/auth.png)
+
+The authentication contains four parts. In AiryMVC, it will be a controller that has the four authentication related actions, they are sign\_in\_action, login\_action, login\_error\_action, and register\_action.
+These four special actions will be directly passed through the authentication check in the dispatcher.
+
+The login here is the login related controller that inherits AclContoller in order to have the login check ability.
+
+```
+    <authentication>
+        <module name="default">
+        <controller>userLogin</controller>
+        <sign_in_action>signIn</sign_in_action>
+        <login_action>userLogin</login_action>
+        <login_error_action>userLoginError</login_error_action>
+        <register_action>register</register_action>
+        <loginout>loginout</loginout>
+        </module>
+        <module name="backend">
+        <controller>login</controller>
+        </module>
+    </authentication>
+```
+
+**successful\_dispatch:**
+
+The part tells the system that which controller and action the system dispatches to once the login is successful.
+
+```
+    <successful_dispatch>     
+            <module name ="backend">
+            <controller>admin</controller>
+            <action>getAdm</action>
+            </module>
+            <module name ="default">
+            <controller>memberInfo</controller>
+            <action>getMemberInfo</action>
+            </module>
+    </successful_dispatch>
+```
+
+**before\_login\_browse\_rules**
+
+![http://airymvc.googlecode.com/files/airy.png](http://airymvc.googlecode.com/files/airy.png)
+
+When "use\_authentication = enable" in the "config.ini", the designated controller and action will be checked if the user has already signed in. If the user has not signed in, they will be forward to the login controller's login action (we configure this in .
+
+
+```
+    <before_login_browse_rules>
+        <module name = "backend">
+            <allow>
+                <controller>admin</controller>
+                    <action>add</action>
+                    <action>getTitle</action>
+            </allow> 
+            <allow>
+                <controller>event</controller>
+            </allow>
+        </module>
+        <module name = "default">
+            <allow>
+                <controller>index</controller>
+                    <action>index</action>
+                    <action>eventDetail</action>
+                    <action>search</action>
+            </allow>
+        </module>
+    </before_login_browse_rules>
+```
+```
+</access_control>
+```
